@@ -1,0 +1,139 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.1.15)  28 MAR 2017 18:03
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**Q.tex
+(./Q.tex
+LaTeX2e <2011/06/27>
+Babel <3.9h> and hyphenation patterns for 78 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+) (./Q.aux)
+\openout1 = `Q.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <14.4> on input line 12.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 12.
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <10.95> on input line 17.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 17.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 17.
+
+
+! LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.17 	In a $\(
+              k,n\)$ threshold scheme, a secret quantum state could be trans...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.18 ... threshold schemes $\(k, n\)$ where $n \le
+                                                   2k$, along with the algor...
+
+? 
+
+! LaTeX Error: Bad math environment delimiter.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.18 ...reason why the shares distributed by a $\(
+                                                  k,n\)$ threshold scheme wi...
+
+? 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.18 ... a $\(k,n\)$ threshold scheme with $k \leq
+                                                   n \le 2k-1$ must be in a ...
+
+? 
+
+Overfull \hbox (1675.12807pt too wide) in paragraph at lines 16--19
+\OT1/cmr/m/n/10.95 en-tan-gle-ment and in-ter-fer-ence be-tween quan-tum states
+. In a $\OML/cmm/m/it/10.95 k; n$$thresholdscheme; asecretquantumstatecouldbetr
+ansformedintonsharesandkeptbydifferentparticipantsamongwhomonlykormoresharescom
+binedcanreconstructthesecret; withanotherrestrictionthatanysetofsharesfewerthan
+kcontainnoinformationatallaboutthesecretandthuscannotbeusedtoreconstructthesecr
+et:Thispaperthenshowsthatitisthe\OT1/cmr/m/n/10.95 "\OML/cmm/m/it/10.95 no \OMS
+/cmsy/m/n/10.95 ^^@
+ []
+
+
+Overfull \hbox (138.37892pt too wide) in paragraph at lines 16--19
+\OML/cmm/m/it/10.95 cloningtheorem\OT1/cmr/m/n/10.95 "\OML/cmm/m/it/10.95 solel
+ythatplacestherestrictionontheexistenceofthethresholdschemes$$k; n$$where$\OT1/
+cmr/m/n/10.95 n
+ []
+
+
+Overfull \hbox (25.84102pt too wide) in paragraph at lines 16--19
+\OT1/cmr/m/n/10.95 plains the rea-son why the shares dis-tributed by a $\OML/cm
+m/m/it/10.95 k; n$$thresholdschemewith$\OT1/cmr/m/n/10.95 k
+ []
+
+[2] (./Q.aux) ) 
+Here is how much of TeX's memory you used:
+ 271 strings out of 493304
+ 3128 string characters out of 6139871
+ 53880 words of memory out of 5000000
+ 3800 multiletter control sequences out of 15000+600000
+ 9110 words of font info for 32 fonts, out of 8000000 for 9000
+ 957 hyphenation exceptions out of 8191
+ 22i,6n,19p,444b,199s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+bx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on Q.pdf (2 pages, 75749 bytes).
+PDF statistics:
+ 35 PDF objects out of 1000 (max. 8388607)
+ 24 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
