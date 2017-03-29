@@ -10,52 +10,58 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: review.bib
 Database file #2: Shamir.bib
 Database file #3: Blakley.bib
+Database file #4: Salvail.bib
+Database file #5: Hillery.bib
+Database file #6: Karlsson.bib
 -- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 Name 1 in "G. R. Blakley," has a comma at the end for entry Blakley
 while executing---line 2419 of file IEEEtran.bst
+Warning--empty title in Salvail
+Warning--empty journal in Salvail
+Warning--empty year in Salvail
 
 Done.
-You've used 3 entries,
+You've used 6 entries,
             4039 wiz_defined-function locations,
-            841 strings with 7698 characters,
-and the built_in function-call counts, 2439 in all, are:
-= -- 215
-> -- 37
-< -- 23
-+ -- 22
-- -- 5
-* -- 134
-:= -- 409
-add.period$ -- 6
-call.type$ -- 3
-change.case$ -- 3
-chr.to.int$ -- 48
-cite$ -- 3
-duplicate$ -- 168
-empty$ -- 167
-format.name$ -- 6
-if$ -- 534
+            860 strings with 8144 characters,
+and the built_in function-call counts, 4635 in all, are:
+= -- 396
+> -- 85
+< -- 45
++ -- 50
+- -- 12
+* -- 246
+:= -- 742
+add.period$ -- 11
+call.type$ -- 6
+change.case$ -- 5
+chr.to.int$ -- 102
+cite$ -- 9
+duplicate$ -- 322
+empty$ -- 327
+format.name$ -- 15
+if$ -- 1029
 int.to.chr$ -- 0
-int.to.str$ -- 3
-missing$ -- 24
-newline$ -- 36
-num.names$ -- 3
-pop$ -- 39
+int.to.str$ -- 6
+missing$ -- 47
+newline$ -- 49
+num.names$ -- 6
+pop$ -- 92
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 187
+skip$ -- 354
 stack$ -- 0
-substring$ -- 121
-swap$ -- 150
-text.length$ -- 7
+substring$ -- 249
+swap$ -- 282
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 3
-warning$ -- 0
-while$ -- 12
-width$ -- 4
-write$ -- 59
+type$ -- 6
+warning$ -- 3
+while$ -- 23
+width$ -- 7
+write$ -- 90
 (There was 1 error message)

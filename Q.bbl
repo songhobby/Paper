@@ -39,4 +39,22 @@ A.~Shamir, ``How to share a secret,'' \emph{Commun. ACM}, vol.~22, no.~11, pp.
 G.~R. Blakley, ``Safeguarding cryptographic keys,'' \emph{Managing Requirements
   Knowledge, International Workshop on}, vol.~00, p. 313, 1899.
 
+\bibitem{Salvail}
+L.~S. (personal communication).
+
+\bibitem{Hillery}
+\BIBentryALTinterwordspacing
+M.~Hillery, V.~Bu\ifmmode~\check{z}\else \v{z}\fi{}ek, and A.~Berthiaume,
+  ``Quantum secret sharing,'' \emph{Phys. Rev. A}, vol.~59, pp. 1829--1834, Mar
+  1999. [Online]. Available:
+  \url{https://link.aps.org/doi/10.1103/PhysRevA.59.1829}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Karlsson}
+\BIBentryALTinterwordspacing
+A.~Karlsson, M.~Koashi, and N.~Imoto, ``Quantum entanglement for secret sharing
+  and secret splitting,'' \emph{Phys. Rev. A}, vol.~59, pp. 162--168, Jan 1999.
+  [Online]. Available: \url{https://link.aps.org/doi/10.1103/PhysRevA.59.162}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}

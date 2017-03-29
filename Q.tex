@@ -4,13 +4,13 @@
 \doublespacing
 
 
-\title{\textbf{Review of How to Share a Quantum Secret \cite{review}}}
-\author{Haobei Song\\University of Waterloo}
+\title{\textbf{Review of How to Share a Quantum Secret \cite{review}}} \author{Haobei Song\\University of Waterloo}
 \date{March 28 2017}
 
 \begin{document}
 
 \pagenumbering{gobble}
+
 \maketitle
 \newpage
 
@@ -23,7 +23,7 @@
 	
 
 \end{abstract}
-\section{Introduction}
+\section{Introductionn}
 \subsection{Preview}
 Since the first time the concept of secret sharing was proposed independently by Adi Shamir\cite{Shamir} and George Blakley\cite{Blakley} in 1979, it has gained appreciable attention and has been studied extensively in quantum computing.
 	Secret sharing also known as secret splitting is refered to as protocols or methods for secret dstribution among a gathering of parties each of whom is provided with a share of the secret. 
@@ -33,16 +33,24 @@ Since the first time the concept of secret sharing was proposed independently by
 	They can open the vault with whichever two clerks present, but no one could open the vault by himself. 
 	Besides, one alone has no idea at all about the structure of the locker on the vault at all. 
 	This method or protocol of dividing the keys (shares of the secret) is a $(2,3)$ threshold scheme.
+	Another interesting potential application of quantum secret is, proposed by Wiesner\cite{Wiesner} in 1983, quantum bank which resembles the previous example.
+	We first build a EPR pair which is in an entangled state. Alice owns one of the two qubits. Bob and Carol each has a share of qubit divided from the other qubit of that EPR pair. As Bob and Carol jointly can reconstruct one qubit with which Alice could then reconstruct the original EPR pair. This process does not leak any information about the secret to any potential eavesdropper as it is easy for them to detect the state collapse whenever the eavesdropeer gains any information about the secret.
 	\\
 \subsection{Quantum Setting}
     A secret sharing protocol with respect to quantum states starts with a random states with no beforehand knowledge about the state. 
+	Salvail\cite{Salvail} invented a protocol to transform one unknown secret qubit into two shares, either of which by itself hold no information about that original qubit and therefore cannot be used to reconstruct the secret qubit, 
+	but those two distributed qubits together can be used to reconstruct the original secret qubit.
+	Hillery\cite{Hillery} and Karlsson\cite{Karlsson} described the methods they adopted to make use of quantum states to achieve classical threshold schemes while an eavesdropper is present. Others took into consideration the possibility of dividing quantum information into different parts each of which shares a certain information about the secret bit.
+\subsection{Quantum Threshold Scheme}
+Here, we define a $(k,n)$ quantum threshold scheme such that the secret quantum state is divided into n shares and any $k (k \le n)$ or more shares can recover the original quantum state, but any set of less than k shares contains absolutely no information at all about the original secret state.
+However, there is no limitation for how many qubits the shares can have.
 
 
 	
 
 
 
-\bibliography{review,Shamir,Blakley}
+\bibliography{review,Shamir,Blakley,Salvail,Hillery,Karlsson,Wiesner}
 \bibliographystyle{IEEEtran}
 
 \end{document}
