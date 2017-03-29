@@ -3,7 +3,8 @@
 \usepackage{setspace}
 \doublespacing
 
-\title{\textbf{Review of How to Share a Quantum Secret}}
+
+\title{\textbf{Review of How to Share a Quantum Secret \cite{review}}}
 \author{Haobei Song\\University of Waterloo}
 \date{March 28 2017}
 
@@ -23,8 +24,25 @@
 
 \end{abstract}
 \section{Introduction}
-Since the first time the concept of secret sharing was put forward independently by Adi Shamir and George Blakley in 1979, it has gained tremendous attention and 
-	Secret sharing also known as secret splitting is refered to as protocols or methods for secret dstribution among a gathering of parties each of whom is provided with a share of the secret. hao
+\subsection{Preview}
+Since the first time the concept of secret sharing was proposed independently by Adi Shamir\cite{Shamir} and George Blakley\cite{Blakley} in 1979, it has gained appreciable attention and has been studied extensively in quantum computing.
+	Secret sharing also known as secret splitting is refered to as protocols or methods for secret dstribution among a gathering of parties each of whom is provided with a share of the secret. 
+	Secret sharing is widely employed in cryptographic key management within information industries and considered of more and more importance as the concept of sharing information on internet has become extensively accepted by more and more people.
+	Suppose the secret is distributed into $n$ shares, then a $(k,n)$ scheme is defined as a method or protocol such that any set of $k$ or more shares can be used to reconstruct the secret, but any set of less than k shares carry absolutely no information at all about the secret divided. 
+	For example, three keys to the vault are assigned to three clerks in a bank. 
+	They can open the vault with whichever two clerks present, but no one could open the vault by himself. 
+	Besides, one alone has no idea at all about the structure of the locker on the vault at all. 
+	This method or protocol of dividing the keys (shares of the secret) is a $(2,3)$ threshold scheme.
+	\\
+\subsection{Quantum Setting}
+    A secret sharing protocol with respect to quantum states starts with a random states with no beforehand knowledge about the state. 
 
+
+	
+
+
+
+\bibliography{review,Shamir,Blakley}
+\bibliographystyle{IEEEtran}
 
 \end{document}
