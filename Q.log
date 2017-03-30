@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.1.15)  30 MAR 2017 01:08
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.1.15)  30 MAR 2017 01:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1276,17 +1276,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 98--101
 
  []
 
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 105--106
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 105--106
-
- []
-
-(./Q.bbl [5]) [6] (./Q.aux) ) 
+[4] (./Q.bbl) [5] (./Q.aux) ) 
 Here is how much of TeX's memory you used:
  7840 strings out of 493304
  144551 string characters out of 6139871
@@ -1294,7 +1284,7 @@ Here is how much of TeX's memory you used:
  11207 multiletter control sequences out of 15000+600000
  12035 words of font info for 43 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 45i,18n,39p,10422b,219s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 45i,18n,39p,10422b,201s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
 ts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
@@ -1304,10 +1294,10 @@ usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on Q.pdf (7 pages, 123054 bytes).
+Output written on Q.pdf (6 pages, 122716 bytes).
 PDF statistics:
- 64 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 59 PDF objects out of 1000 (max. 8388607)
+ 41 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
