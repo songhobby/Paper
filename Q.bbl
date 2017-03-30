@@ -39,6 +39,9 @@ A.~Shamir, ``How to share a secret,'' \emph{Commun. ACM}, vol.~22, no.~11, pp.
 G.~R. Blakley, ``Safeguarding cryptographic keys,'' \emph{Managing Requirements
   Knowledge, International Workshop on}, vol.~00, p. 313, 1899.
 
+\bibitem{Wiesner}
+Wiesner, ``Conjugate coding,'' \emph{SIGACT News}, pp. 15,77.
+
 \bibitem{Salvail}
 L.~S. (personal communication).
 

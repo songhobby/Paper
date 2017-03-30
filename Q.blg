@@ -13,55 +13,62 @@ Database file #3: Blakley.bib
 Database file #4: Salvail.bib
 Database file #5: Hillery.bib
 Database file #6: Karlsson.bib
+Database file #7: Wiesner.bib
+I was expecting a `,' or a `}'---line 6 of file Wiesner.bib
+ :  
+ :  year={1983},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 -- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
 Name 1 in "G. R. Blakley," has a comma at the end for entry Blakley
 while executing---line 2419 of file IEEEtran.bst
+Warning--empty year in Wiesner
 Warning--empty title in Salvail
 Warning--empty journal in Salvail
 Warning--empty year in Salvail
 
 Done.
-You've used 6 entries,
+You've used 7 entries,
             4039 wiz_defined-function locations,
-            860 strings with 8144 characters,
-and the built_in function-call counts, 4635 in all, are:
-= -- 396
-> -- 85
-< -- 45
-+ -- 50
-- -- 12
-* -- 246
-:= -- 742
-add.period$ -- 11
-call.type$ -- 6
-change.case$ -- 5
-chr.to.int$ -- 102
-cite$ -- 9
-duplicate$ -- 322
-empty$ -- 327
-format.name$ -- 15
-if$ -- 1029
+            865 strings with 8190 characters,
+and the built_in function-call counts, 5246 in all, are:
+= -- 444
+> -- 94
+< -- 51
++ -- 56
+- -- 13
+* -- 273
+:= -- 836
+add.period$ -- 13
+call.type$ -- 7
+change.case$ -- 6
+chr.to.int$ -- 117
+cite$ -- 11
+duplicate$ -- 369
+empty$ -- 378
+format.name$ -- 16
+if$ -- 1169
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 47
-newline$ -- 49
-num.names$ -- 6
-pop$ -- 92
+int.to.str$ -- 7
+missing$ -- 53
+newline$ -- 52
+num.names$ -- 7
+pop$ -- 108
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 354
+skip$ -- 400
 stack$ -- 0
-substring$ -- 249
-swap$ -- 282
-text.length$ -- 11
+substring$ -- 285
+swap$ -- 317
+text.length$ -- 12
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 6
-warning$ -- 3
-while$ -- 23
-width$ -- 7
-write$ -- 90
-(There was 1 error message)
+type$ -- 7
+warning$ -- 4
+while$ -- 27
+width$ -- 8
+write$ -- 98
+(There were 2 error messages)

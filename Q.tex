@@ -1,14 +1,16 @@
 \documentclass[12pt]{article}
 
 \usepackage{setspace}
-\doublespacing
+\singlespacing
+
+\usepackage{physics}
+\usepackage{amsmath}
 
 
 \title{\textbf{Review of How to Share a Quantum Secret \cite{review}}} \author{Haobei Song\\University of Waterloo}
 \date{March 28 2017}
 
-\begin{document}
-
+\begin{document} 
 \pagenumbering{gobble}
 
 \maketitle
@@ -19,15 +21,15 @@
 \begin{abstract}
 	Secret sharing also known as secret splitting has been developed considerably ever since its invention in 1979. With the emerging of quantum computing, study of secret sharing protocols implemented by quantum physics becomes an active area filled with interest and intrigue due to the eccentric properties from quantum mechanics such as entanglement and interference between quantum states.
 	In a $(k,n)$ threshold scheme, a secret quantum state could be transformed into n shares and kept by different participants among whom only k or more shares combined can reconstruct the secret, with another restriction that any set of shares fewer than k contain no information at all about the secret and thus cannot be used to reconstruct the secret.
-	This paper then shows that it is the "no-cloning theorem" solely that places the restriction on the existence of the threshold schemes $(k, n)$ where $n \le 2k$, along with the algorithms for constructiong all of the threshold schemes belonging to this category efficiently. In addition, it also explains the reason why the shares distributed by a $(k,n)$ threshold scheme with $k \leq n \le 2k-1$ must be in a global mixed state.
+	This paper then shows that it is the "no-cloning theorem" solely that places the restriction on the existence of the threshold schemes $(k, n)$ where $n < 2k$, along with the algorithms for constructiong all of the threshold schemes belonging to this category efficiently. In addition, it also explains the reason why the shares distributed by a $(k,n)$ threshold scheme with $k \leq n < 2k-1$ must be in a global mixed state.
 	
-
 \end{abstract}
+
 \section{Introductionn}
-\subsection{Preview}
 Since the first time the concept of secret sharing was proposed independently by Adi Shamir\cite{Shamir} and George Blakley\cite{Blakley} in 1979, it has gained appreciable attention and has been studied extensively in quantum computing.
 	Secret sharing also known as secret splitting is refered to as protocols or methods for secret dstribution among a gathering of parties each of whom is provided with a share of the secret. 
 	Secret sharing is widely employed in cryptographic key management within information industries and considered of more and more importance as the concept of sharing information on internet has become extensively accepted by more and more people.
+	\\
 	Suppose the secret is distributed into $n$ shares, then a $(k,n)$ scheme is defined as a method or protocol such that any set of $k$ or more shares can be used to reconstruct the secret, but any set of less than k shares carry absolutely no information at all about the secret divided. 
 	For example, three keys to the vault are assigned to three clerks in a bank. 
 	They can open the vault with whichever two clerks present, but no one could open the vault by himself. 
@@ -36,14 +38,84 @@ Since the first time the concept of secret sharing was proposed independently by
 	Another interesting potential application of quantum secret is, proposed by Wiesner\cite{Wiesner} in 1983, quantum bank which resembles the previous example.
 	We first build a EPR pair which is in an entangled state. Alice owns one of the two qubits. Bob and Carol each has a share of qubit divided from the other qubit of that EPR pair. As Bob and Carol jointly can reconstruct one qubit with which Alice could then reconstruct the original EPR pair. This process does not leak any information about the secret to any potential eavesdropper as it is easy for them to detect the state collapse whenever the eavesdropeer gains any information about the secret.
 	\\
-\subsection{Quantum Setting}
+	As quantum secret sharing was still a relative strange area combining both frontier physics and cryptography, Cleve, Gottesman and Lo studies from the base and explained the only restraint the "no-cloning theorem" laid on the existence of all the threshold schemes where $n < 2k$ \cite{review}. They also proposed an algorithm to effectively construct all the possible threshold schemes. Besides, they showed heuristically any $(k, n)$ threshold scheme with $k \leq n < 2k-1$ condition satisfied inevitablly give away some information to the shares which form a globally mixed state. Their work contributed considerablly to the later development of quantum secret sharing and encouraged plenty of profound discoveries in both physics and computer science.\\
+
+	This review paper is written carefully to present readers from various domains with heuristic understanding of the basis upon which quantum sharing is built. I will first introduce the setting up of quantum threshold schemes and some insights about its difference from classical shcemes. Then I will explain the rigorous proofs in their original talented paper. Different from the original work, I will show the proof in great detail to give general readers understanding of some nontrivial math along with it.\\
+	
+\section{Quantum Threshold Scheme}
     A secret sharing protocol with respect to quantum states starts with a random states with no beforehand knowledge about the state. 
 	Salvail\cite{Salvail} invented a protocol to transform one unknown secret qubit into two shares, either of which by itself hold no information about that original qubit and therefore cannot be used to reconstruct the secret qubit, 
 	but those two distributed qubits together can be used to reconstruct the original secret qubit.
 	Hillery\cite{Hillery} and Karlsson\cite{Karlsson} described the methods they adopted to make use of quantum states to achieve classical threshold schemes while an eavesdropper is present. Others took into consideration the possibility of dividing quantum information into different parts each of which shares a certain information about the secret bit.
 \subsection{Quantum Threshold Scheme}
-Here, we define a $(k,n)$ quantum threshold scheme such that the secret quantum state is divided into n shares and any $k (k \le n)$ or more shares can recover the original quantum state, but any set of less than k shares contains absolutely no information at all about the original secret state.
+Here, we define a $(k,n)$ quantum threshold scheme such that the secret quantum state is divided into n shares and any $k (k < n)$ or more shares can recover the original quantum state, but any set of less than k shares contains absolutely no information at all about the original secret state.
 However, there is no limitation for how many qubits the shares can have.
+\\
+The following is a $(2,3)$ quantum threshold scheme which divide a secret qutrit (three dimensional quantum state) into three qutrits any two or more of which could be used to reconstruct the original qutrit.
+\begin{align}
+	\alpha \ket{0} + \beta \ket{1} + \gamma \ket{2} \mapsto
+	& \alpha ( \ket{000} + \ket{111} + \ket{222} ) \nonumber \\
+	& \beta  ( \ket{012} + \ket{120} + \ket{201} ) \nonumber \\
+	& \gamma ( \ket{021} + \ket{102} + \ket{210} ) 
+\end{align}
+Each qutrit is a share which contains no information at all about the secret as these shares present a symetric structure with each qutrit having equal probability of being in $ \ket{0}, \ket{1}, \ket{2} $. More detaied mathematical proof is as follows when we trace out the second and the third qutrits.
+\begin{align}
+	& \alpha ( \ket{000} + \ket{111} + \ket{222} ) +
+	\beta  ( \ket{012} + \ket{120} + \ket{201} ) + 
+	\gamma ( \ket{021} + \ket{102} + \ket{210} )  \nonumber \\ 
+	\xrightarrow{ \Tr}
+	& (\alpha ^2 + \beta ^2 + \gamma ^2, \ket{0}), 
+	(\alpha ^2 + \beta ^2 + \gamma ^2, \ket{1}),
+	(\alpha ^2 + \beta ^2 + \gamma ^2, \ket{2}) 
+\end{align}
+As all the three states are of equal probability to collapes into, 
+there is no way eavesdroppers can obtain any useful information about the original qutrit.
+However, any two shares can recover the original qutrit perfectly if we add the first qutrit to the second and then add the modified second qutrit back to the first one. This can be easily implemented by three dimensional quantum control gates.
+\begin{align}
+	& \alpha ( \ket{000} + \ket{111} + \ket{222} ) +
+	\beta  ( \ket{012} + \ket{120} + \ket{201} ) + 
+	\gamma ( \ket{021} + \ket{102} + \ket{210} ) \nonumber \\ 
+	\mapsto 
+	& \alpha ( \ket{000} + \ket{121} + \ket{212} ) +
+	\beta  ( \ket{012} + \ket{100} + \ket{221} ) + 
+	\gamma ( \ket{021} + \ket{112} + \ket{200} ) \nonumber \\ 
+	\mapsto
+	& \alpha ( \ket{000} + \ket{021} + \ket{012} ) +
+	\beta  ( \ket{112} + \ket{100} + \ket{121} ) + 
+	\gamma ( \ket{221} + \ket{212} + \ket{200} ) \nonumber \\ 
+	=
+	& ( \alpha \ket{0} + \beta \ket{1} + \gamma \ket{2})
+	(\ket{00} + \ket{12} + \ket{21})
+\end{align}
+As a result, the secret qutrit is reconstructed at the first qutrit after the transformation above.\\
+Researchers from quantum computing would recognize the similarities of this protocol with quantum error-correctiong algorithms. Furthermore, it is actually a three-qutrit quantum correcting code which corrects one erasure error of the three intermidiate qutrits. Generally speaking, each quantum threshold scheme is in some sense an error-correcting code which can be implemented by quantum sharing, which I will show later with proofs. But the inverse is not that simple as some error-correcting code leaks partial information from the secret qubit (or qutrit). Here is a four-qubit error-correctiong code correcting one erasure error:
+\begin{equation*}
+	\alpha \ket{0} + \beta \ket{1} \mapsto \alpha ( \ket{0000} + \ket{1111}) + \beta ( \ket{0011} + \ket{1100})
+\end{equation*}
+Any three qubits can be used to construct the original secret qubit by the same idea from previous example, but not all the sets of less than $3$ qubits contain no information about the secret. Notice the asymmetry within the structure of the transformed qubits. Given any one of the first two qubits and one of the last two qubits, we can by a high probability distinguish between $\ket{0}$ and $\ket{1}$ since if we trace out, say the first and the last qubit, we end up with:
+\begin{equation}
+	( \alpha ^2, \ket{00}), ( \alpha ^2, \ket{11}), ( \beta ^2, \ket{01}), ( \beta ^2, \ket{10})
+\end{equation}
+Whenever $ \alpha $ differes from $ \beta $, there would be a preference of being in first two of the four states $ \norm{\alpha} > \norm{\beta} $ over the other two and vice versa.
+However, there are other protocols which could achieve the $(3,4)$ threshold scheme theoretically and I will show how to come up with that protocol from a general consideration in the proof part of this paper.\\
+\section{Proof Chain}
+From now no, consider it possible to construct a $(3, 4)$ threshold scheme procotol, which I will return back to later. We can always discard one qubit of the shared states (by tracing out that state to discard as shown by (2) and (3), and use the $(3,4)$ threshold scheme to implement a $(3, 3)$ threshold scheme. The same is true to obtain a $(2,2)$ threshold scheme from a $(2, 3)$ threshold scheme or more generally:
+
+\paragraph{Theorem 1.}
+\textit{From any $(k,n)$ threshold scheme with $n > k$, a $(k, n-1)$ threshold scheme can be constructed by discarding one share.} \\\\
+\paragraph{Proof:} Drawn from the study of classical secret sharing, a $(k,n)$ threshold scheme can be constructed as long as $n \ge k$. But this is not the case for quantum secret sharing as a result of the famous "no-cloning theorem"
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	
