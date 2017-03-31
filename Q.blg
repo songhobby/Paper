@@ -20,6 +20,8 @@ I was expecting a `,' or a `}'---line 6 of file Wiesner.bib
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Database file #8: Bennett.bib
+Database file #9: Calderbank.bib
+Database file #10: Knill.bib
 -- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -31,45 +33,45 @@ Warning--empty journal in Salvail
 Warning--empty year in Salvail
 
 Done.
-You've used 8 entries,
+You've used 10 entries,
             4039 wiz_defined-function locations,
-            874 strings with 8376 characters,
-and the built_in function-call counts, 6180 in all, are:
-= -- 526
-> -- 115
-< -- 61
-+ -- 68
-- -- 16
-* -- 322
-:= -- 979
-add.period$ -- 15
-call.type$ -- 8
-change.case$ -- 7
-chr.to.int$ -- 141
-cite$ -- 12
-duplicate$ -- 431
-empty$ -- 442
-format.name$ -- 20
-if$ -- 1382
+            891 strings with 8689 characters,
+and the built_in function-call counts, 8070 in all, are:
+= -- 695
+> -- 151
+< -- 83
++ -- 90
+- -- 20
+* -- 418
+:= -- 1268
+add.period$ -- 19
+call.type$ -- 10
+change.case$ -- 9
+chr.to.int$ -- 195
+cite$ -- 14
+duplicate$ -- 555
+empty$ -- 571
+format.name$ -- 26
+if$ -- 1814
 int.to.chr$ -- 0
-int.to.str$ -- 8
-missing$ -- 62
-newline$ -- 57
-num.names$ -- 8
-pop$ -- 125
+int.to.str$ -- 10
+missing$ -- 78
+newline$ -- 67
+num.names$ -- 10
+pop$ -- 153
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 471
+skip$ -- 617
 stack$ -- 0
-substring$ -- 342
-swap$ -- 376
-text.length$ -- 14
+substring$ -- 470
+swap$ -- 496
+text.length$ -- 18
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 8
+type$ -- 10
 warning$ -- 4
-while$ -- 32
-width$ -- 9
-write$ -- 111
+while$ -- 42
+width$ -- 12
+write$ -- 137
 (There were 2 error messages)
