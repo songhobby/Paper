@@ -60,4 +60,12 @@ A.~Karlsson, M.~Koashi, and N.~Imoto, ``Quantum entanglement for secret sharing
   [Online]. Available: \url{https://link.aps.org/doi/10.1103/PhysRevA.59.162}
 \BIBentrySTDinterwordspacing
 
+\bibitem{Bennett}
+\BIBentryALTinterwordspacing
+C.~H. Bennett, G.~Brassard, and N.~D. Mermin, ``Quantum cryptography without
+  bell's theorem,'' \emph{Phys. Rev. Lett.}, vol.~68, pp. 557--559, Feb 1992.
+  [Online]. Available:
+  \url{https://link.aps.org/doi/10.1103/PhysRevLett.68.557}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}

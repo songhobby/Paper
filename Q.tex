@@ -29,7 +29,7 @@
 Since the first time the concept of secret sharing was proposed independently by Adi Shamir\cite{Shamir} and George Blakley\cite{Blakley} in 1979, it has gained appreciable attention and has been studied extensively in quantum computing.
 	Secret sharing also known as secret splitting is refered to as protocols or methods for secret dstribution among a gathering of parties each of whom is provided with a share of the secret. 
 	Secret sharing is widely employed in cryptographic key management within information industries and considered of more and more importance as the concept of sharing information on internet has become extensively accepted by more and more people.
-	\\
+
 	Suppose the secret is distributed into $n$ shares, then a $(k,n)$ scheme is defined as a method or protocol such that any set of $k$ or more shares can be used to reconstruct the secret, but any set of less than k shares carry absolutely no information at all about the secret divided. 
 	For example, three keys to the vault are assigned to three clerks in a bank. 
 	They can open the vault with whichever two clerks present, but no one could open the vault by himself. 
@@ -37,8 +37,8 @@ Since the first time the concept of secret sharing was proposed independently by
 	This method or protocol of dividing the keys (shares of the secret) is a $(2,3)$ threshold scheme.
 	Another interesting potential application of quantum secret is, proposed by Wiesner\cite{Wiesner} in 1983, quantum bank which resembles the previous example.
 	We first build a EPR pair which is in an entangled state. Alice owns one of the two qubits. Bob and Carol each has a share of qubit divided from the other qubit of that EPR pair. As Bob and Carol jointly can reconstruct one qubit with which Alice could then reconstruct the original EPR pair. This process does not leak any information about the secret to any potential eavesdropper as it is easy for them to detect the state collapse whenever the eavesdropeer gains any information about the secret.
-	\\
-	As quantum secret sharing was still a relative strange area combining both frontier physics and cryptography, Cleve, Gottesman and Lo studies from the base and explained the only restraint the "no-cloning theorem" laid on the existence of all the threshold schemes where $n < 2k$ \cite{review}. They also proposed an algorithm to effectively construct all the possible threshold schemes. Besides, they showed heuristically any $(k, n)$ threshold scheme with $k \leq n < 2k-1$ condition satisfied inevitablly give away some information to the shares which form a globally mixed state. Their work contributed considerablly to the later development of quantum secret sharing and encouraged plenty of profound discoveries in both physics and computer science.\\
+
+	As quantum secret sharing was still a relative strange area combining both frontier physics and cryptography, Cleve, Gottesman and Lo studies from the base and explained the only restraint the "no-cloning theorem" laid on the existence of all the threshold schemes where $n < 2k$ \cite{review}. They also proposed an algorithm to effectively construct all the possible threshold schemes. Besides, they showed heuristically any $(k, n)$ threshold scheme with $k \leq n < 2k-1$ condition satisfied inevitablly give away some information to the shares which form a globally mixed state. Their work contributed considerablly to the later development of quantum secret sharing and encouraged plenty of profound discoveries in both physics and computer science.
 
 	This review paper is written carefully to present readers from various domains with heuristic understanding of the basis upon which quantum sharing is built. I will first introduce the setting up of quantum threshold schemes and some insights about its difference from classical shcemes. Then I will explain the rigorous proofs in their original talented paper. Different from the original work, I will show the proof in great detail to give general readers understanding of some nontrivial math along with it.\\
 	
@@ -87,7 +87,8 @@ However, any two shares can recover the original qutrit perfectly if we add the 
 	& ( \alpha \ket{0} + \beta \ket{1} + \gamma \ket{2})
 	(\ket{00} + \ket{12} + \ket{21})
 \end{align}
-As a result, the secret qutrit is reconstructed at the first qutrit after the transformation above.\\
+As a result, the secret qutrit is reconstructed at the first qutrit after the transformation above.
+
 Researchers from quantum computing would recognize the similarities of this protocol with quantum error-correctiong algorithms. Furthermore, it is actually a three-qutrit quantum correcting code which corrects one erasure error of the three intermidiate qutrits. Generally speaking, each quantum threshold scheme is in some sense an error-correcting code which can be implemented by quantum sharing, which I will show later with proofs. But the inverse is not that simple as some error-correcting code leaks partial information from the secret qubit (or qutrit). Here is a four-qubit error-correctiong code correcting one erasure error:
 \begin{equation*}
 	\alpha \ket{0} + \beta \ket{1} \mapsto \alpha ( \ket{0000} + \ket{1111}) + \beta ( \ket{0011} + \ket{1100})
@@ -102,27 +103,45 @@ However, there are other protocols which could achieve the $(3,4)$ threshold sch
 From now no, consider it possible to construct a $(3, 4)$ threshold scheme procotol, which I will return back to later. We can always discard one qubit of the shared states (by tracing out that state to discard as shown by (2) and (3), and use the $(3,4)$ threshold scheme to implement a $(3, 3)$ threshold scheme. The same is true to obtain a $(2,2)$ threshold scheme from a $(2, 3)$ threshold scheme or more generally:
 
 \paragraph{Theorem 1.}
-\textit{From any $(k,n)$ threshold scheme with $n > k$, a $(k, n-1)$ threshold scheme can be constructed by discarding one share.} 
-\paragraph{Proof:} Drawn from the study of classical secret sharing, a $(k,n)$ threshold scheme can be constructed as long as $n \ge k$. But this is not the case for quantum secret sharing as a result of the famous "no-cloning theorem"
+\textit{From any $(k,n)$ threshold scheme with $n > k$, a $(k, n-1)$ threshold scheme can be constructed by discarding one share.}  \\ \\
+Drawn from the study of classical secret sharing, a $(k,n)$ threshold scheme can be constructed as long as $n \ge k$. But this is not the case for quantum secret sharing as a result of the famous "no-cloning theorem". We could prove 
+\paragraph{Theorem 2.}
+\textit{There exits no threshold scheme form $n \ge 2k $.}
+\paragraph{\textit{Proof:}}
+By contradiction, suppose there exists a threshold scheme $S:(k, n)$ with $n \ge 2k$ and an arbitrary secret state can be divided into $n$ shares which we denote as set $N$.
+First, collect $k$ shares from the $n$ divided quantum states to form a set $N_1$ which a subset of $N$, and the original arbitrary quantum state could be reconstructed by $N_1$.
+Then, collect another set $N_2$ of $k$ shares from the set $N \setminus N_1$, and we can recover the original arbitrary secret state together with the one created before contradicting the no-cloning theorem as we could otherwise use this protocol to copy any arbitrary quantum state.
+\paragraph{Theorem 3.}
+\textit{A quantum correction scheme which corrects $k-1$ erasure errors from the codewords of length $2k-1$ is also a $(k,2k-1)$ threshold scheme.}
+\paragraph{\textit{Proof:}}
+Given the codeword shares transformed from the original code, $k$ bits of the codeword can then be used to reconstruct the original word as the error correction scheme can correct the rest $k-1$ erasure errors. These $k$ bits are taken as the $k$ shares in a threshold scheme context and can be used to recover the secret.
+
+The key point is to show that the $k-1$ shares (corresponding to the $k-1$ bits to be corrected) contain absolute no information about the original secret (code). By the measurement theory in quantum mechanics, any measurement performed on a quantum state would make it collapse to its eigenstate.
+And whenever we gain some information about the secret from those $k-1$ shares, we inexorablly made an measurement on them and make the whole system collapse  to a state which lost some information about the original secret.\cite{Bennett}
+As a result, the $k$ bits among the codewords cannot theoretically reconstruct the original code. Therefore, those $k-1$ contains no information at all about the secret code if there exists such error-correction algorithm.
+\\\\
+From both \textbf{Theorem 3} and \textbf{Theorem 1}, we have the following corollary directly.
+\paragraph{\textit{Corollary 4.}}
+A $[[2k-1,1,k]]_q$ error-correction code ensures the existence of a $(k,n)$ quantum threshold schmeme for any $n < 2k$.
+\\\\
+Here let us catch up with the following definition in the rest of the proofs.
+
+\paragraph{Definition 1.}
+\textit{A quantum threshold scheme that encodes pure state secrets into global pure state is called a \textbf{pure state scheme.} 
+For a quantum threshold scheme by which if there exists any secret quantum pure state which is encoded to a global mixed state, such a threshold scheme is called a \textbf{mixed state scheme}}
+\\\\
+All the quantum threshold schemes shown previously are mixed state schemes by this definition.
+\\\\
+We could actually move further from \textbf{Theorem 2}.
+\paragraph{Theorem 5.}
+\textit{If $n < 2k$, then a $(k,n)$ threshold scheme exists. In addition, the dimension of each share can be counded above by $2\textbf{max }(2k-1,s)$,where s is the dimension of the quantum secret.}
+\paragraph{\textit{Proof:}}
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-	
-
-
-
-\bibliography{review,Shamir,Blakley,Salvail,Hillery,Karlsson,Wiesner}
+\bibliography{review,Shamir,Blakley,Salvail,Hillery,Karlsson,Wiesner,Bennett}
 \bibliographystyle{IEEEtran}
 
 \end{document}

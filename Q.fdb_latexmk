@@ -1,10 +1,12 @@
 # Fdb version 3
-["bibtex Q"] 1490836014 "Q.aux" "Q.bbl" "Q" 1490836020
+["bibtex Q"] 1490922163 "Q.aux" "Q.bbl" "Q" 1490922164
   "/usr/share/texlive/texmf-dist/bibtex/bst/IEEEtran/IEEEtran.bst" 1222816716 59506 016987d9be15acf51cdd7252d40ecec2 ""
+  "Bennett.bib" 1490922039 434 d09efdef722acb416a20b45d40d9d697 ""
   "Blakley.bib" 1490747148 374 f19dd781e3b1daa4a8e1131c3b20e54d ""
   "Hillery.bib" 1490766037 441 0b5df67dd44358db3de086732e52d7ad ""
   "Karlsson.bib" 1490766049 436 056487282b79abcdcae748ea166ba77c ""
-  "Q.aux" 1490836017 693 3af3adf4d1719ef199b983c8e0c33d83 ""
+  "Q.aux" 1490922164 1133 b404118bcb7c06fc70ddf2357b9236ab ""
+  "Q.bcf" 0 -1 0 ""
   "Salvail.bib" 1490765177 69 2b7037d19567f59853e7ce82186ba542 ""
   "Shamir.bib" 1490747241 465 3d9848b95374e21b9b9ba6041b1e5b35 ""
   "Wiesner.bib" 1490767008 124 f9cbacb35b461a29e873b0b88f6f44d2 ""
@@ -12,13 +14,14 @@
   (generated)
   "Q.blg"
   "Q.bbl"
-["latex"] 1490836016 "Q.tex" "Q.dvi" "Q" 1490836020
-  "/etc/texmf/web2c/texmf.cnf" 1438975761 1101 af7716885e081ab43982cab7b4672c1a ""
+["latex"] 1490922163 "Q.tex" "Q.dvi" "Q" 1490922164
+  "/etc/texmf/web2c/texmf.cnf" 1485893344 1101 af7716885e081ab43982cab7b4672c1a ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbxti10.tfm" 1136768653 1532 9162035f4e7176612125649e348e2195 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1136768653 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm" 1136768653 1528 abec98dbc43e172678c11b3b9031252a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
@@ -73,12 +76,12 @@
   "/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty" 1324344192 22913 a27d7908fc6f0385466454a966a316eb ""
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1392645748 31083 1dfd8bf685ce0009c40532fedf8a7c53 ""
   "/usr/share/texmf/web2c/texmf.cnf" 1392645748 31083 1dfd8bf685ce0009c40532fedf8a7c53 ""
-  "/var/lib/texmf/web2c/pdftex/latex.fmt" 1452881719 3822812 66810cf6207400c30e3a9e3b8753ac9d ""
-  "Q.aux" 1490836017 693 3af3adf4d1719ef199b983c8e0c33d83 ""
-  "Q.bbl" 1490836014 2345 b9a3e69637a8c4a97ef425e6c91d9ea3 "bibtex Q"
-  "Q.tex" 1490835737 6089 fc0836b79288fa8b294e363d3d708cf5 ""
+  "/var/lib/texmf/web2c/pdftex/latex.fmt" 1485972645 3822811 2a86d97bfb789d9e389a6b3fa44f6c71 ""
+  "Q.aux" 1490922164 1133 b404118bcb7c06fc70ddf2357b9236ab ""
+  "Q.bbl" 1490922163 2660 258e769f2d0cd4fa6dca6a9b24cd651e "bibtex Q"
+  "Q.tex" 1490922128 13666 c7221fbddaf18c00e443adc1c6500f8f ""
   "physics.sty" 1490826077 29610 a9597219b282d9c78b02393dcd7d4322 ""
   (generated)
-  "Q.dvi"
-  "Q.aux"
   "Q.log"
+  "Q.aux"
+  "Q.dvi"
