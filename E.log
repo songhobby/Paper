@@ -1,15 +1,15 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=latex 2016.1.15)  31 MAR 2017 17:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.3.22)  3 APR 2017 23:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**E.tex
+**E
 (./E.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 78 languages loaded.
+LaTeX2e <2016/02/01>
+Babel <3.9q> and hyphenation patterns for 3 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
 \c@section=\count80
@@ -45,15 +45,26 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 7.
  [1
 
-]
-[1] (./E.aux) ) 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [1] [2] (./E.aux) ) 
 Here is how much of TeX's memory you used:
- 230 strings out of 493305
- 2401 string characters out of 6139897
- 53877 words of memory out of 5000000
- 3764 multiletter control sequences out of 15000+600000
+ 231 strings out of 494953
+ 2412 string characters out of 6180977
+ 52390 words of memory out of 5000000
+ 3590 multiletter control sequences out of 15000+600000
  7887 words of font info for 28 fonts, out of 8000000 for 9000
- 957 hyphenation exceptions out of 8191
- 23i,6n,17p,564b,199s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 14 hyphenation exceptions out of 8191
+ 23i,6n,17p,717b,199s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr9.pfb>
+Output written on E.pdf (3 pages, 78118 bytes).
+PDF statistics:
+ 38 PDF objects out of 1000 (max. 8388607)
+ 26 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-Output written on E.dvi (2 pages, 2640 bytes).
