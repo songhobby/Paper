@@ -29,4 +29,30 @@ N.~Papernot, P.~D. McDaniel, X.~Wu, S.~Jha, and A.~Swami, ``Distillation as a
   \url{http://arxiv.org/abs/1511.04508}
 \BIBentrySTDinterwordspacing
 
+\bibitem{MNIST}
+\BIBentryALTinterwordspacing
+C.~J.~B. Yann~LeCun, Corinna~Cortes, ``The mnist database of handwritten
+  digits.'' [Online]. Available: \url{https://yann.lecun.com/exdb/mnist}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Lasagne}
+\BIBentryALTinterwordspacing
+S.~Dieleman, J.~Schlüter, C.~Raffel, E.~Olson, S.~K. Sønderby, D.~Nouri,
+  D.~Maturana, M.~Thoma, E.~Battenberg, J.~Kelly, J.~D. Fauw, M.~Heilman, D.~M.
+  de~Almeida, B.~McFee, H.~Weideman, G.~Takács, P.~de~Rivaz, J.~Crall,
+  G.~Sanders, K.~Rasul, C.~Liu, G.~French, and J.~Degrave, ``Lasagne: First
+  release.'' Aug. 2015. [Online]. Available:
+  \url{http://dx.doi.org/10.5281/zenodo.27878}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Theano}
+\BIBentryALTinterwordspacing
+R.~Al-Rfou, G.~Alain, A.~Almahairi, C.~Angermueller, D.~Bahdanau, N.~Ballas,
+  F.~Bastien, J.~Bayer, A.~Belikov, A.~Belopolsky, Y.~Bengio, A.~Bergeron,
+  J.~Bergstra, and V.~B. and, ``{Theano: A {Python} framework for fast
+  computation of mathematical expressions},'' \emph{arXiv e-prints}, vol.
+  abs/1605.02688, May 2016. [Online]. Available:
+  \url{http://arxiv.org/abs/1605.02688}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}

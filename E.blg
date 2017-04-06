@@ -8,49 +8,55 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: Papernot.bib
+Database file #2: MNIST.bib
+Database file #3: Lasagne.bib
+Database file #4: Theano.bib
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in MNIST
+Warning--empty year in MNIST
 
 Done.
-You've used 1 entry,
+You've used 4 entries,
             4087 wiz_defined-function locations,
-            828 strings with 7508 characters,
-and the built_in function-call counts, 685 in all, are:
-= -- 46
-> -- 21
-< -- 1
-+ -- 10
-- -- 5
-* -- 51
-:= -- 133
-add.period$ -- 2
-call.type$ -- 1
-change.case$ -- 1
+            846 strings with 8584 characters,
+and the built_in function-call counts, 3030 in all, are:
+= -- 178
+> -- 175
+< -- 2
++ -- 86
+- -- 43
+* -- 179
+:= -- 465
+add.period$ -- 8
+call.type$ -- 4
+change.case$ -- 4
 chr.to.int$ -- 0
-cite$ -- 1
-duplicate$ -- 45
-empty$ -- 45
-format.name$ -- 6
-if$ -- 130
+cite$ -- 6
+duplicate$ -- 214
+empty$ -- 219
+format.name$ -- 46
+if$ -- 656
 int.to.chr$ -- 0
-int.to.str$ -- 1
-missing$ -- 10
-newline$ -- 28
-num.names$ -- 1
-pop$ -- 24
+int.to.str$ -- 4
+missing$ -- 63
+newline$ -- 43
+num.names$ -- 4
+pop$ -- 178
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 44
+skip$ -- 200
 stack$ -- 0
-substring$ -- 1
-swap$ -- 31
-text.length$ -- 1
+substring$ -- 4
+swap$ -- 159
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 1
-warning$ -- 0
-while$ -- 1
-width$ -- 2
-write$ -- 34
+type$ -- 4
+warning$ -- 2
+while$ -- 4
+width$ -- 5
+write$ -- 65
+(There were 2 warnings)
