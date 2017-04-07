@@ -12,6 +12,8 @@ Database file #2: Papernot2.bib
 Database file #3: MNIST.bib
 Database file #4: Lasagne.bib
 Database file #5: Theano.bib
+Database file #6: Ba.bib
+Database file #7: Shalev.bib
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -19,45 +21,45 @@ Warning--empty journal in MNIST
 Warning--empty year in MNIST
 
 Done.
-You've used 5 entries,
+You've used 7 entries,
             4087 wiz_defined-function locations,
-            852 strings with 8818 characters,
-and the built_in function-call counts, 3645 in all, are:
-= -- 226
-> -- 200
-< -- 3
-+ -- 98
-- -- 49
-* -- 213
-:= -- 572
-add.period$ -- 10
-call.type$ -- 5
-change.case$ -- 5
-chr.to.int$ -- 0
-cite$ -- 7
-duplicate$ -- 261
-empty$ -- 265
-format.name$ -- 53
-if$ -- 792
+            868 strings with 9127 characters,
+and the built_in function-call counts, 5184 in all, are:
+= -- 360
+> -- 236
+< -- 17
++ -- 118
+- -- 55
+* -- 290
+:= -- 815
+add.period$ -- 14
+call.type$ -- 7
+change.case$ -- 7
+chr.to.int$ -- 30
+cite$ -- 9
+duplicate$ -- 370
+empty$ -- 374
+format.name$ -- 61
+if$ -- 1145
 int.to.chr$ -- 0
-int.to.str$ -- 5
-missing$ -- 74
-newline$ -- 48
-num.names$ -- 5
-pop$ -- 205
+int.to.str$ -- 7
+missing$ -- 92
+newline$ -- 56
+num.names$ -- 7
+pop$ -- 241
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 246
+skip$ -- 368
 stack$ -- 0
-substring$ -- 5
-swap$ -- 192
-text.length$ -- 3
+substring$ -- 77
+swap$ -- 285
+text.length$ -- 7
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 5
+type$ -- 7
 warning$ -- 2
-while$ -- 5
-width$ -- 6
-write$ -- 77
+while$ -- 11
+width$ -- 8
+write$ -- 100
 (There were 2 warnings)

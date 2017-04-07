@@ -63,4 +63,16 @@ N.~Papernot, P.~D. McDaniel, S.~Jha, M.~Fredrikson, Z.~B. Celik, and A.~Swami,
   \url{http://arxiv.org/abs/1511.07528}
 \BIBentrySTDinterwordspacing
 
+\bibitem{Ba}
+\BIBentryALTinterwordspacing
+L.~J. Ba and R.~Caurana, ``Do deep nets really need to be deep?'' \emph{CoRR},
+  vol. abs/1312.6184, 2013. [Online]. Available:
+  \url{http://arxiv.org/abs/1312.6184}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Shalev}
+S.~Shalev-Shwartz, O.~Shamir, N.~Srebro, and K.~Sridharan, ``Learnability,
+  stability and uniform convergence,'' \emph{Journal of Machine Learning
+  Research}, vol.~11, no. Oct, pp. 2635--2670, 2010.
+
 \end{thebibliography}

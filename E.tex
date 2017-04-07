@@ -63,11 +63,12 @@ The 70,000 examples are divided into a test set of 10,000 samples and a training
 The architecture of the CNN used in this work resembles the CNN built by \cite{Papernot} in order to verify the effectiveness they claimed of distillation as a defense against deep neural networks.\cite{MNIST}
 
 \begin{center}
-	{\large 
-	\textbf{Architecture of the CNN for MNIST}
-	}
+\begin{table}
+	{\large \textbf{Architecture of the CNN for MNIST}
+	\\}
+
 	\begin{tabular*}{\textwidth}{{c}{c}{c}}
-		\\ \hline \hline
+	\\ \hline \hline
 		Layer Type & nonlinearity &Characteristics\\ \hline
 		Input layer & N/A & N/A \\
 		Convolutional layer & Rectified linear unit & 32 filters ($3\times3$)\\
@@ -100,7 +101,8 @@ The architecture of the CNN used in this work resembles the CNN built by \cite{P
 		GPU generation toolkit & cuda-8.0 \\ \hline
 
 	\end{tabular*}
-	\\
+	\caption{CNN architecture}
+\end{table}
 \end{center}
 
 The convolutional network above is implemented by the Lasagne\cite{Lasagne} which is built upon Theano\cite{Theano} to generate computational graph in order to accelerate computation during training and the later testing.
@@ -129,7 +131,7 @@ The following are examples of adversarial samples obtained from examples in the 
 	\begin{minipage}{0.5\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{sample_original2.png}
-		\caption{Original examples from MNIST}
+		\caption{Original examples}
 	\end{minipage} \hfill
 	\begin{minipage}{0.5\textwidth}
 		\centering
@@ -138,7 +140,7 @@ The following are examples of adversarial samples obtained from examples in the 
 	\end{minipage}
 \end{figure}
 
-For traditional CNN, the success rate is $72\%$ with maximum 100 pixels perturbed using adversarial sample crafting \textbf{algorithm 1.}, more than $95\%$ by \textbf{algorithm 2.} and \textbf{algorithm 3.}.
+For traditional CNN, the success rate is $66\%$ with maximum 100 pixels perturbed using adversarial sample crafting \textbf{algorithm 1.}, more than $95\%$ by \textbf{algorithm 2.} and \textbf{algorithm 3.}.
 
 \subsection{Adversarial Sample Crafting Algorithms}
 \paragraph{Algorithm 1.}
@@ -166,7 +168,7 @@ This algorithm was proposed by Papernot\cite{Papernot} in 2016 to simplify the p
 In addition, this algorithm would fail when the gradient of original pixels picked by saliency map is close to the maximum.\cite{Papernot2}
 Let $Grad(x_[m][n])$ be the gradient of loss function on $[m][n]$ of the input array, we have 
 \begin{equation}
-	\Delta loss = Grad(x[m][n])\Delta x[m][n]
+	\Delta loss \approx Grad(x[m][n])\Delta x[m][n]
 \end{equation}
 $\Delta loss$ would not change too much with small $\Delta x[m][n]$ even when $Grad(x[m][n])$ is large.
 
@@ -203,7 +205,7 @@ Therefore, we implement the following algorithm to make use of most of the infor
 This algorithm captures most of the information in the input array as it makes use both positive and negative large gradients. It also takes into account the amplitude of the changing step for each input pixel to maximize the equation (1).
 
 However, the computational cost or time efficiency cost is $\mathcal{O}(N+M)$ where $N$ is the length of the input array and $M$ is the limit of the number of pixels to be modified. 
-But the \textbf{algorithm 1} is of $Omicron(N)$ if we assume the cost for computing gradient on a piexel the same as the cost for evaluating the loss function once.
+But the \textbf{algorithm 1} is of $\mathcal{O}(N)$ if we assume the cost for computing gradient on a piexel the same as the cost for evaluating the loss function once.
 
 We can actually sacrifice a little accuracy to obtain a $\mathcal{O}(N)$ efficiency.
 
@@ -236,39 +238,182 @@ Based on \textbf{Algorithm 2.}, update the saliency maps each time an input arra
 \section{Temperature vs. Distillation against Adversarial Perturbations}
 
 \paragraph{Definition 2.}
-The \textbf{temperature} of a softmax layer (usually used as an output layerin DNN) is defined as the parameter $T$ such that the softmax function with temperature becomes 
+The \textbf{temperature} of a softmax layer (usually used as an output layerin DNN) is defined as the parameter $T$, which is greater than $1$, such that the softmax function with temperature becomes 
 \begin{equation}
-	f(\mathbf{x_i};T)=\frac{\exp{\frac{\mathbf{x_i}}{T}}}{\sum_{j=1}^n 
-	\exp{\frac{\mathbf{x_j}}{T}}}
+	f(\mathbf{x_i};T)=\frac{e^{\frac{\mathbf{x_i}}{T}}}{\sum_{j=1}^n 
+	e^{\frac{\mathbf{x_j}}{T}}}
 \end{equation}
+
 We can show that as temperature increases, the robustness or sensitivity to perturbations of pixels decreases tremendously.
+
 \paragraph{Proof 1.}
 Let $\mathbf{x}$ be the input vector to the softmax output layer and the target vector $\mathbf{y}$ is a one-hot vector with $1$ at $j$, $j\in{0,1,\dots 9}$ and $0$ for the rest indices.
 
-The loss function $L$ is, for $\mathbf{y}_k=1$:
+The loss function $L(\mathbf{x};T)$ is, for $\mathbf{y}_k=1$:
+
 \begin{equation}
-	L(\mathbf{x}) = \frac{\exp{\frac{\mathbf{x}_k}{T}}}{\sum_{j=0}^9 \exp{\frac{\mathbf{x}_j}{T}}}
+	L(\mathbf{x};T) = \frac{e^{\frac{\mathbf{x}_k}{T}}}{\sum_{j=0}^9 e^{\frac{\mathbf{x}_j}{T}}}
 \end{equation}
-\begin{align}
-	\frac{\partial L(\mathbf{x})}{\partial \mathbf{x}_i} &= 
-	\frac{1}{(\sum_{j=0}^9 \exp{\frac{\mathbf{x}_j}{T}})^2}
+\begin{align*}
+	\frac{\partial L(\mathbf{x};T)}{\partial \mathbf{x}_i} &= 
+	\frac{1}{(\sum_{j=0}^9 e^{\frac{\mathbf{x}_j}{T}})^2}
 	(
-	\frac{\partial \exp{\frac{\mathbf{x}_k}{T}}}{\partial \mathbf{x}_i}
-	\sum_{j=0}^9 \exp{\frac{\mathbf{x}_j}{T}} 
-	+ \exp{\frac{\mathbf{x}_k}{T}}
-	\frac{\partial \sum_{j=0}^9 \exp{\frac{\mathbf{x}_j}{T}}}{\partial \mathbf{x}_i}
+	\frac{\partial e^{\frac{\mathbf{x}_k}{T}}}{\partial \mathbf{x}_i}
+	\sum_{j=0}^9 e^{\frac{\mathbf{x}_j}{T}} 
+	+ e^{\frac{\mathbf{x}_k}{T}}
+	\frac{\partial \sum_{j=0}^9 e^{\frac{\mathbf{x}_j}{T}}}{\partial \mathbf{x}_i}
 	)\\
 	&=
-	\frac{1}{T(\sum_{j=0}^9 \exp{\frac{\mathbf{x}_j}{T}})^2} (
-	\delta (i-k) \exp{\frac{\mathbf{x}_k}{T}}
-	\sum_{j=0}^9 \exp{\frac{\mathbf{x}_j}{T}}+
-	\exp{\frac{2\mathbf{x}_k}{T}} )
-\end{align}
+	\frac{1}{T(\sum_{j=0}^9 e^{\frac{\mathbf{x}_j}{T}})^2} (
+	\delta_{ik} e^{\frac{\mathbf{x}_k}{T}}
+	\sum_{j=0}^9 e^{\frac{\mathbf{x}_j}{T}}+
+	e^{\frac{2\mathbf{x}_k}{T}} )\\
+\end{align*}
 
-The temperature as a term in denominator 
+Since the input vector $\mathbf{x}$ is always close to 0,
+
+\begin{equation}
+	\frac{\partial L(\mathbf{x};T)}{\partial \mathbf{x}_i}
+	\approx \frac{\frac{\partial L(\mathbf{x};T=0)}{\partial \mathbf{x}_i}}{T} \text{ when } (\mid \mathbf{x}_i \mid \ll 1)
+\end{equation}
+When $T$ approaches $(T \rightarrow \infty)$ infinity, we have 
+\begin{align*}
+	(\sum_{j=0}^9 e^{\frac{\mathbf{x}_j}{T}})^{2T} -
+	(\sum_{j=0}^9 e^{\mathbf{x}_j})^{2}
+	&=((\sum_{j=0}^9 e^{\frac{\mathbf{x}_j}{T}})^T+
+	\sum_{j=0}^9 e^{\mathbf{x}_j})((\sum_{j=0}^9 e^{\frac{\mathbf{x}_j}{T}})^T-\sum_{j=0}^9 e^{\mathbf{x}_j})\\
+	&\ge((\sum_{j=0}^9 e^{\frac{\mathbf{x}_j}{T}})^T+
+	\sum_{j=0}^9 e^{\mathbf{x}_j})\cdot 0 \ge 0 \hspace{10pt} (T > 1)\\
+	e^{\frac{\mathbf{x}_j}{T}} &\le e^{\mathbf{x}_j}\\
+	\frac{\partial L(\mathbf{x};T)}{\partial \mathbf{x}_i} &\le 
+	\frac{1}{T(\sum_{j=0}^9 e^{\mathbf{x}_j})^{\frac{2}{T}}} (
+	\delta_{ik} e^{\mathbf{x}_k}
+	\sum_{j=0}^9 e^{\mathbf{x}_j}+
+	e^{\mathbf{x}_k} )\\
+	&\le \frac{L(\mathbf{x},T=1)}{T(\sum_{j=0}^9 e^{\mathbf{x}_j})^{2(\frac{1}{T}-1)}}\\
+	&\approx 
+	\frac{L(\mathbf{x},T=1)}{T\cdot 10^{-2}} = 
+	\frac{100L(\mathbf{x},T=1)}{T}
+\end{align*}
+
+The temperature as a term in denominator still determines the gradient when the temperature becomes much large.
+
+We chose the temperature at $t=20$ as it is an appropriate setting at which both relatively high prediction accuracy and robustness are achieved by papernot's empirical study\cite{Papernot}. Most importantly, large temperature induces disastrous underflow. 
+
+When the temperature is set to 20, the average gradient is already approximately $10^{-60}$. Only around $30\%$ percent of the sample can be used for numerical analysis. That is an important reason \textbf{algorithm 2.} is used in our work. 
+Though the computational cost is relatively high but it is the only algorithm that could be analyzed numerically without intricate modification of the computational graph.
+
+\paragraph{Definition 3.} 
+\textbf{Distiallation training} is a procedure to, given a previously trained DNN model $M_1$ trained on target $y_1$, feed the same input $x$ to a learning model $M_2$ to fit the \textbf{distilled target} $y_2=M_1(x)$.\cite{Ba}
+
+Distillation training was initially designed to train a deep learning neural network on a resource restricted device such as phones and tablets. As the computational cost is too high to feed a gigantic dataset to a DNN with moderate number of layers on such devices. 
+Distillation training makes use of the knowledge leared by another more powerful DNN and only use a subset of the database with distilled targets to solve supervised learning problems.
+As the distilled targets (such as soft labels) extracted more information from the database compared to original targets (such as hard labels), the distilled CNN could converge more rapidly by gradient descent or other optimization methods.
+
+\section{Results and Discussion}
+
+\paragraph{Building CNN}The convolutional neural network chosen in our study is a based on the architecture used by Papernot\cite{Papernot}.
+ But, to avoid gradient explosion occuring when calculating the Jacobian of the loss function with high temperature during testing process, the traning rate is reduced to a half.
+
+The testing accuracy for traditional training is \\
+\begin{equation}
+M_{std} \sim  99.57\%
+\end{equation}
+For distillation training using the same input with distilled targets produce by $M_{std}$, the testing accuracy is \\
+\begin{equation}
+M_{distill} \sim 99.07\%
+\end{equation}
+The comparison training $M_{std-T}$ is a traditional training model except for the output layer using softmax fuction at temperature $20$. After training it with the original targets, the testing accuracy is a bit higher than $M_{distill}$.
+\begin{equation}
+M_{std-T} \sim 99.34 \%
+\end{equation}
+All the three models generalize considerablly well, as proved by Papernot\cite{Papernot} using the theorems proved by Shalev\cite{Shalev}.
+
+\paragraph{Crafting Adversarial Samples}
+We implemented \textbf{Algorithm 2.} to craft adversarial samples due to its relatively high success rate of crafting a adversarial sample which decieves a traditionally trained CNN , and most importantly to avoid underflow when calculating gradient on CNN with high temperature. Further study can attempt to implement \textbf{Algorithm 3.} which requires some intricate modification for building the computational graph.
+
+The adversarial attack success rate is around $rate_{std}=37\%$ for $M_{std}$ (39.01\% for $M_{distill}$ and 35.69\% for $M_{std-T}$ without excluding the samples causing $M_{distill}$ or $M_{std-T}$ to underflow). Similarly, $rate_{distill}=1.31\%$, $rate_{std-T}=0.81\%$. In summary:
+
+\begin{table}[h!]
+
+{\large \textbf{Adversarial Attack Success Rate Comparison}}
+
+\medskip
+\begin{center}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} |c|c|} 
+ \hline
+		\hspace{1.5cm} Model \hspace{1.5cm} & \hspace{1cm}Relative Attack Success Rate \hspace{1cm} \\ 
+\hline
+$M_{std}$ & $rate_{std}/rate_{std}=100$ \\ 
+\hline 
+$M_{distill}$ & $rate_{std}/rate_{distill}=29.77$ \\ 
+\hline 
+$M_{std-T}$ & $rate_{std}/rate_{std-T}=44.30$ \\ 
+\hline
+\end{tabular*}
+\end{center}
+\caption{Adversarial attack success rate comparison}
+\end{table}
+
+Here is an example showing the effectiveness of defense against adversarial attacks for different CNN models.
+
+We continue to perturb pixels one by one using \textbf{Algorithm 2.} until the prediction produced by the CNN model differs from the target value.
+
+\begin{figure}[h!]
+	\begin{minipage}{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{original1.png}
+		\caption{Original}
+	\end{minipage} \hfill
+	\begin{minipage}{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{std1.png}
+		\caption{$M_{std}$}
+	\end{minipage} 
+	\begin{minipage}{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{distill1.png}
+		\caption{$M_{distill}$}
+	\end{minipage} \hfill
+\end{figure}
+
+\begin{figure}[h!]
+	\begin{minipage}{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{O.png}
+		\caption{Original}
+	\end{minipage} \hfill
+	\begin{minipage}{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{S.png}
+		\caption{$M_{std}$}
+	\end{minipage} 
+	\begin{minipage}{0.3\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{T.png}
+		\caption{$M_{std-T}$}
+	\end{minipage} \hfill
+\end{figure}
+
+As illustrated by \textbf{Figure 3$\sim$k8}, the success rate to decieve a traditionally trained CNN is $66\%$ when the maximum pixels to perturb is set to 100.
+While both distillation training and high temperature traditional training improve the robustness of the CNN against adversarial perturbation and reduce the success rate to $2.22\%$ for distillation training and $1.49\%$ for high temperature traditional training from our empirical study.
+
+Our empirical study suggests that the robustness against adversarial perturbation of the CNN trained by distillation at high temperature should result from the high temperature rather than the usage of distillation technique.
+
+\section{Conclusion}
+
+To investigate the effectiveness of distillation as a defense to adversarial perturbation against convolutional neural network (CNN), we adopted the same CNN network used by \cite{Papernot} with tiny modification to avoid underflow during the testing process.
+
+A traditional CNN $M_{std}$ was trained as a blank model and model $M_{distill}$ was trained by distillation with the distilled targets produced by $M_{std}$.
+As a comparison, another CNN $M_{std-T}$ of the same architecture without distillation was trained at the same temperature as the distillation model.
+We implemented the adversarial sample crafting \textbf{Algorithm 2.} for relatively high success rate and low computational cost. Besides, this algorithm reduces the chance to underflow when evaluating saliency maps.
+
+Our testing result shows that the two modified CNN models $M_{distill},M_{std-T}$ both generalize $(M_{distill} \sim 99.07\%$ , $(M_{std-T} \sim 99.34\%)$ well compared to traditional training $(99.57\%)$ with slight decrease. 
+
+However, both model $M_{distill}$ and $M_{std-T}$ improve the robustness of the CNN by almost the same amount with 
 
 
-we chose the temperature at $t=20$ as it is an appropriate setting at which both relatively high prediction accuracy and robustness are achieved by papernot's empirical study\cite{Papernot}.
+
 
 \newpage
 \appendix
@@ -319,6 +464,45 @@ $[[$  1.96173855e-09   1.35970735e-09  -8.05801559e-09   3.28918093e-09 \\
    $\dots \dots \dots ]]$
 
 \newpage
-\bibliography{Papernot,Papernot2,MNIST,Lasagne,Theano} 
+\section{Sample Saliency Map for CNN with Temperature at 20}
+mean gradient: -4.60666e-40\\
+max gradient: 8.69376e-38\\
+Perturbed: 29\\
+$[$[ -6.82432352e-43  -3.63777081e-42  -1.27966576e-41  -3.99019738e-41\\
+   -6.94091155e-41  -7.64982845e-41  -7.88314464e-41  -8.01360553e-41\\
+   -6.43784540e-41  -5.24632132e-41  -5.45357336e-41  -6.26240284e-41\\
+   -5.84705797e-41  -2.21531274e-41  -2.49290997e-42  -2.14272548e-41\\
+   -2.29014208e-41   1.71659062e-42   2.30401494e-41   2.03118212e-41\\
+   -1.20105291e-41  -4.23696604e-41  -4.21020124e-41  -2.27402715e-41\\
+   -7.83325842e-42  -5.29690820e-43   1.37467379e-42   4.18988241e-43$]$\\
+ $[$ -4.98441864e-42  -1.73690945e-41  -6.04898508e-41  -1.49134590e-40\\
+   -2.37923664e-40  -2.42957128e-40  -2.51343899e-40  -2.64765536e-40\\
+   -2.11076186e-40  -1.66848404e-40  -1.80167746e-40  -2.05524242e-40\\
+   -1.82702695e-40  -7.99749060e-41  -3.26138205e-41  -1.30067122e-40\\
+   -1.48216740e-40  -3.62319731e-41   6.64159420e-41   4.29021538e-41\\
+   -8.63059724e-41  -1.88040241e-40  -1.84482344e-40  -1.01968285e-40\\
+   -2.87854731e-41  -1.11403228e-42   2.18322301e-42   5.77334967e-43$]$\\
+ $[$ -1.30544965e-41  -4.48289392e-41  -8.68931165e-41  -1.67659756e-40\\
+   -2.21584524e-40  -1.57075749e-40  -1.35002495e-40  -1.62844895e-40\\
+   -1.39821561e-40  -1.16907528e-40  -1.56899185e-40  -2.04048675e-40\\
+   -1.50052441e-40  -1.27896511e-41  -1.46015300e-42  -1.71430650e-40\\
+   -2.10676816e-40  -1.40255963e-41   1.21356651e-40   3.94871894e-41\\
+   -1.17525501e-40  -1.99155340e-40  -1.48655346e-40  -4.39461211e-41\\
+    2.31788779e-41   1.73859100e-41   1.89315423e-42  -4.51218106e-43$]$\\
+ $[$ -3.67238289e-41  -1.06619195e-40  -7.38974745e-41   3.68415379e-41 \\
+ 1.91769096e-40   3.67316761e-40   4.42441773e-40   3.60479826e-40\\
+    1.57591427e-40   1.96044458e-40   6.49050620e-40   5.17073528e-40\\
+   -6.65555113e-40  -1.68051419e-39  -2.50207586e-39  -3.95834726e-39\\
+   -5.42554599e-39  -6.21457092e-39  -5.94773987e-39  -4.21364563e-39\\
+   -2.21070948e-39  -5.45098096e-40   7.77510453e-41   2.04819389e-40\\
+    1.12713442e-40   1.72317672e-41  -1.67497205e-41  -4.30058499e-42$]$\\
+ $[$ -4.75628725e-41  -1.28367347e-40  -6.36539827e-41   1.42966075e-40\\
+    3.62727509e-40   5.08650323e-40   6.05152143e-40   4.18591673e-40\\
+   -1.20262237e-40   3.05464848e-40   2.18003926e-39   1.72078330e-39\\
+   -2.77900187e-39  -8.29900518e-39  -1.22252893e-38  -1.73823493e-38\\
+   -2.55598409e-38  -2.91966420e-38  -2.94271276e-38  -2.03610180e-38\\
+ \dots \dots \dots $]]$\\
+ \newpage
+\bibliography{Papernot,Papernot2,MNIST,Lasagne,Theano,Ba,Shalev} 
 \bibliographystyle{IEEEtran}
 \end{document}
