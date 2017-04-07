@@ -55,4 +55,12 @@ R.~Al-Rfou, G.~Alain, A.~Almahairi, C.~Angermueller, D.~Bahdanau, N.~Ballas,
   \url{http://arxiv.org/abs/1605.02688}
 \BIBentrySTDinterwordspacing
 
+\bibitem{Papernot2}
+\BIBentryALTinterwordspacing
+N.~Papernot, P.~D. McDaniel, S.~Jha, M.~Fredrikson, Z.~B. Celik, and A.~Swami,
+  ``The limitations of deep learning in adversarial settings,'' \emph{CoRR},
+  vol. abs/1511.07528, 2015. [Online]. Available:
+  \url{http://arxiv.org/abs/1511.07528}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}
