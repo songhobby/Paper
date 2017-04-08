@@ -21,6 +21,10 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{schmid}
+J.~Schmidhuber, ``Deep learning in neural networks: An overview,'' \emph{Neural
+  networks}, vol.~61, pp. 85--117, 2015.
+
 \bibitem{Papernot}
 \BIBentryALTinterwordspacing
 N.~Papernot, P.~D. McDaniel, X.~Wu, S.~Jha, and A.~Swami, ``Distillation as a
