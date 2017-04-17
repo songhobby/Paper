@@ -106,7 +106,7 @@ The architecture of the CNN used in this work resembles the CNN built by \cite{P
 \end{center}
 
 The convolutional network above is implemented by Lasagne\cite{Lasagne} which is built upon Theano\cite{Theano} to generate computational graph in order to accelerate computation during training and the later testing.
-We adopted latest GPU generation code on NVIDIA GTX 1060 graphic card with 6 GB GDDR5 to reduce the time required for each training so as to be able to compare the robustness against adversarial perturbations when hyperparameters change.
+We adopted latest GPU generation code cuda-8.0 on NVIDIA GTX 1060 graphic card with 6 GB GDDR5 to reduce the time required for each training so as to be able to compare the robustness against adversarial perturbations when hyperparameters change.
 All the code used in this paper is available on github \url{https://github.com/songhobby/CNN.git}
 
 \section{Effect of Adversarial Perturbations against CNN}
@@ -150,12 +150,12 @@ For traditional CNN, the success rate is $66\%$ with maximum 100 pixels perturbe
 
 \item Randomly select a sample input with its target output and make a copy of that input array denoted as $c$
 
-\item Build a saliency map $S$ mapping each index $S[m][n]$ to the gradient of the cross-entropy (loss function) with respect to the corresponding input $c[m][n]$, which as a whole forms a 2D array. (see an example in \textbf{Appendix A}
+\item Build a salience map $S$ mapping each index $S[m][n]$ to the gradient of the cross-entropy (loss function) with respect to the corresponding input $c[m][n]$, which as a whole forms a 2D array. (see an example in \textbf{Appendix A}
 
 \item Iterate for trial from $i=1$:
 
 \begin{enumerate}
-	\item Find the maximum number $k_i[m][n]$ in the saliency map.
+	\item Find the maximum number $k_i[m][n]$ in the salience map.
 
 	\item Set $k_i[m][n]$ to minus infinity  and $c[m][n]$ to the maximum.
 
@@ -168,7 +168,7 @@ For traditional CNN, the success rate is $66\%$ with maximum 100 pixels perturbe
 \end{enumerate}
 
 This algorithm was proposed by Papernot\cite{Papernot} in 2016 to simplify the process of crafting adversarial samples. It focuses solely on the pixels of positive large gradient with respect to the cross-entropy, but the information contained in the pixels with negative as large gradient is left out.
-In addition, this algorithm would fail when the gradient of original pixels picked by saliency map is close to the maximum.\cite{Papernot2}
+In addition, this algorithm would fail when the gradient of original pixels picked by salience map is close to the maximum.\cite{Papernot2}
 
 Let $Grad(x_[m][n])$ be the gradient of loss function on $[m][n]$ of the input array, we have 
 \begin{equation}
@@ -180,7 +180,7 @@ Therefore, we implement the following algorithm to make use of most of the infor
 
 \paragraph{Algorithm 2.}
 \begin{enumerate}
-	\item Randomly select a sample input and make a copy of it as $c$, plug $c$ into the loss function $L$ and calculate the loss of the example. Denote it as $loss_0=L(c)$ and let $S_1,S_2$ represent two saliency maps.
+	\item Randomly select a sample input and make a copy of it as $c$, plug $c$ into the loss function $L$ and calculate the loss of the example. Denote it as $loss_0=L(c)$ and let $S_1,S_2$ represent two salience maps.
 	\item Iterate through the input array and for any $m,n$
 		\begin{enumerate}
 			\item $c[m][n]=temp$
@@ -193,7 +193,7 @@ Therefore, we implement the following algorithm to make use of most of the infor
 
 	\item Iterate for trial from $i=1$:
 		\begin{enumerate}
-			\item Find $M_i=max\{S_1[m][n],S_2[m][n]\}$ in the saliency map.
+			\item Find $M_i=max\{S_1[m][n],S_2[m][n]\}$ in the salience map.
 				\begin{enumerate}
 					\item if $M_i==S_1[m][n]$, $c[m][n]=1(maximum)$
 					\item if $M_i==S_2[m][n]$, $c[m][n]=0(minimum)$
@@ -217,12 +217,12 @@ We can actually sacrifice a little accuracy to obtain a $\mathcal{O}(N)$ efficie
 \begin{enumerate}
 \item Randomly select a sample input with its target output and make a copy of that input array denoted as $c$
 
-\item Build a saliency map $S$ mapping each index $S[m][n]$ to the gradient of the cross-entropy (loss function) with respect to the corresponding input $c[m][n]$, which as a whole forms a 2D array. (see an example in \textbf{Appendix A}
+\item Build a salience map $S$ mapping each index $S[m][n]$ to the gradient of the cross-entropy (loss function) with respect to the corresponding input $c[m][n]$, which as a whole forms a 2D array. (see an example in \textbf{Appendix A}
 
 \item Iterate for trial from $i=1$:
 
 \begin{enumerate}
-	\item Find the number $k_i[m][n]$ with maximum absolute value in the saliency map.
+	\item Find the number $k_i[m][n]$ with maximum absolute value in the salience map.
 
 	\item Set $k_i[m][n]$ to 0 , and depending on the sign of $k_i[m][n]$, set $c[m][n]$ to 1 (the maximum) if $k_i[m][n] > 0$ and 0 (the minimum) otherwise ($k_i[m][n] < 0$).
 
@@ -236,9 +236,9 @@ We can actually sacrifice a little accuracy to obtain a $\mathcal{O}(N)$ efficie
 
 These three algorithms are implemented in our work and the code is availabale at \url{https://github.com/songhobby/CNN.git} named as test1,py, test3,py and test2.py.
 
-Though, this is not the end of story. A more effective algorithm is to calculate the saliency map every time an index of input array is modified. But the computational cost is of $\mathcal{O}(N^2)$.
+Though, this is not the end of story. A more effective algorithm is to calculate the salience map every time an index of input array is modified. But the computational cost is of $\mathcal{O}(N^2)$.
 \paragraph{Algorithm 4.}
-Based on \textbf{Algorithm 2.}, update the saliency maps each time an input array index is modified.
+Based on \textbf{Algorithm 2.}, update the salience maps each time an input array index is modified.
 \section{Temperature vs. Distillation against Adversarial Perturbations}
 
 \paragraph{Definition 2.}
@@ -250,7 +250,7 @@ The \textbf{temperature} of a softmax layer (usually used as an output layer of 
 
 We can show that as temperature increases, the sensitivity to perturbations of pixels decreases tremendously.
 
-\paragraph{Proof 1.}
+\paragraph{Proof:}
 Let $\mathbf{x}$ be the input vector to the softmax output layer and the target vector $\mathbf{y}$ is a one-hot vector with $1$ at $j$, $j\in{0,1,\dots 9}$ and $0$ for the rest indices.
 
 The loss function $L(\mathbf{x};T)$ is, for $\mathbf{y}_k=1$:
@@ -302,10 +302,10 @@ Moreover, when $T$ approaches $(T \rightarrow \infty)$ infinity, we have
 
 The temperature as a term in denominator still determines the gradient when the temperature becomes much large.
 
-We chose the temperature at $t=20$ as it is an appropriate setting at which both relatively high prediction accuracy and robustness are achieved by papernot's empirical study\cite{Papernot}. Most importantly, large temperature induces disastrous underflow. 
+We chose the temperature at $t=20$ as it is an appropriate setting at which both relatively high prediction accuracy and robustness are achieved by papernot's empirical study\cite{Papernot}. Most importantly, large temperature induces disastrous underflow, which makes numerical analysis impossible. 
 
-When the temperature is set to 20, the average gradient is already approximately $10^{-60}$. Only around $30\%$ percent of the sample can be used for numerical analysis. That is an important reason \textbf{algorithm 2.} is used in our work. 
-Though the computational cost is relatively high but it is the only algorithm that could be analyzed numerically without recompiling the code to obtain higher precision or intricate modification of the computational graph.
+When the temperature is set to 20, our empirical study shows the average gradient is already approximately $10^{-50}$ predicted by Gaussian distribution, as a majority of the salience maps underflow when tested using float32 floating point numbers (the smallest positive number float32 mode could represent is of order $10^{-40}$. Only around $30\%$ percent of the sample can be used for numerical analysis. That is an important reason \textbf{algorithm 2.} is used in our work. 
+Though the computational cost is relatively high but it is the only algorithm that could be analyzed numerically on more samples than any other algorithms without recompiling the code to obtain higher precision or intricate modification of the computational graph.
 
 \paragraph{Definition 3.} 
 \textbf{Distillation training} is a procedure to, given a previously trained DNN model $M_1$ trained on original target $y_1$, feed the same input $x$ to a learning model $M_2$ to fit the \textbf{distilled target} $y_2=M_1(x)$.\cite{Ba}
@@ -336,7 +336,7 @@ The comparison training model $M_{std-T}$ is a traditional training model except
 M_{std-T} \sim 99.34 \%
 \end{equation}
 
-All the three models generalize considerably well, as proved by Papernot\cite{Papernot} using the theorems introduced by Shalev\cite{Shalev}.
+All the three models generalize considerably well, as also proved in a more general case by Papernot\cite{Papernot} using the theorems introduced by Shalev\cite{Shalev}.
 
 \paragraph{Crafting Adversarial Samples}
 We implemented \textbf{Algorithm 2} to craft adversarial samples due to its relatively high success rate of crafting a adversarial sample which could deceives a traditionally trained CNN , and most importantly to avoid underflow when calculating gradient on CNN with high temperature. Further study can attempt to implement \textbf{Algorithm 3} which requires some intricate modification for building the computational graph.
@@ -416,8 +416,8 @@ Our empirical study suggests that the robustness against adversarial perturbatio
 To investigate the effectiveness of distillation as a defense to adversarial perturbation against convolutional neural network (CNN), we adopted the same CNN network used by \cite{Papernot} with modifications to avoid gradient explosion during training process and underflow during the testing process.
 
 A traditional CNN $M_{std}$ was trained as a blank comparison model and model $M_{distill}$ was trained by distillation with the distilled targets produced by $M_{std}$.
-As a comparison, another CNN $M_{std-T}$ of the same architecture without distillation was trained at the same temperature as the distillation model $(M_{distill})$.
-We implemented the adversarial sample crafting \textbf{Algorithm 2} for relatively high success rate and low computational cost. Besides, this algorithm reduces the chance to underflow when evaluating saliency maps.
+As a blank comparison, another CNN $M_{std-T}$ of the same architecture without distillation was trained at the same temperature as the distillation model $(M_{distill})$.
+We implemented the adversarial sample crafting \textbf{Algorithm 2} for relatively high success rate and low computational cost. Besides, this algorithm reduces the chance to underflow when evaluating salience maps.
 
 Our testing result shows that the two modified CNN models $M_{distill},M_{std-T}$ both generalize $(M_{distill} \sim 99.07\%$ , $M_{std-T} \sim 99.34\%)$ well compared to traditional training $(99.57\%)$ with slight decrease (less than 0.5\%). 
 However, both model $M_{distill}$ and $M_{std-T}$ improve the robustness of the CNN by almost the same amount with $M_{std-T}$ slightly more robust than $M_{distill}$. This result suggests that the temperature of the output sofmax layer plays the most important role in reducing the success rate of adversarial attacks. Therefore, it leaves the effectiveness of distillation training in question.
@@ -429,11 +429,11 @@ Moreover, further study can investigate the robustness of CNN at much higher tem
 
 \newpage
 \appendix
-\section{Sample Saliency Map for Traditionally Trained CNN}
+\section{Sample Salience Map for Traditionally Trained CNN}
 mean gradient: -2.2915e-08\\
 max gradient: 9.78318e-05\\
 Perturbed: 12\\
-Saliency map:\\
+Salience map:\\
 $[[$  1.96173855e-09   1.35970735e-09  -8.05801559e-09   3.28918093e-09 \\
    -5.48783348e-08  -7.17473085e-08  -4.38453718e-08  -5.30832978e-08 \\
    -2.52357182e-07  -1.88820479e-07  -1.97611584e-07  -1.68086672e-07 \\
@@ -470,13 +470,10 @@ $[[$  1.96173855e-09   1.35970735e-09  -8.05801559e-09   3.28918093e-09 \\
     6.97585074e-06   5.88091916e-06   2.81491452e-06  -7.44247046e-08 \\
     4.02008197e-07   1.79280406e-07   5.18654453e-10  -2.27380781e-10$]$ \\
  $[$  1.39619694e-08   7.94599799e-08   2.30915077e-07   1.45152370e-07 \\
-   -1.62453290e-07   4.98938050e-07   1.09356279e-06   3.30207649e-06 \\
-    5.32647027e-06   1.17240131e-06  -2.52363971e-05  -3.77056786e-05 \\
-   -2.10110920e-05   2.28969529e-05   5.51288531e-06  -7.51445987e-06 \\
    $\dots \dots \dots ]]$
 
 \newpage
-\section{Sample Saliency Map for CNN with Temperature at 20}
+\section{Sample Salience Map for CNN with Temperature at 20}
 mean gradient: -4.60666e-40\\
 max gradient: 8.69376e-38\\
 Perturbed: 29\\
