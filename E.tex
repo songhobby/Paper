@@ -18,19 +18,19 @@
 \pagenumbering{arabic}
 
 \begin{abstract}
-	Convolutional neural network (CNN) as a well developed deep learning architecture has been widely used in computer vision such as automatic inspection, autonomous driving, image processing. 
+	Convolutional neural network (CNN) as a well developed deep learning architecture has been widely used in computer vision such as automatic inspection, autonomous driving, image processing.
 	Though state-of-art accuracy by elaborately designed CNN was achieved in many computer vision tasks, 
 	recent studies have shown the potential vulnerability to adversarial perturbations among not only CNN but other deep neural networks.
 	This discovery is of substantial significance as the widely usage of Convolutional neural network targets tasks of extensive security concern
 	such as the CNN used in autonomous driving where the car might be crushed by slight modification of the environment. 
 	In this study, the defensive effect of distillation training for CNN is evaluated together with traditional trained CNN with and without temperature setting for MNIST task on a data set of 60,000 examples.
-	The result shows it is the temperature (T) of the softmax function of the output layer that turns out to be the main factor in reducing the adverserial gradient (by a factor of $10^{10}$ at $T=20$) and the success rate of adversarial attack (by a factor of 10 when $T=20$),
- rather than the distillation traininng technique claimed effective by other researchers.
+	The result shows it is the temperature (T) of the softmax function of the output layer that turns out to be the main factor in reducing the adversarial gradient (by a factor of $10^{10}$ at $T=20$) and the success rate of adversarial attack (by a factor of 10 when $T=20$),
+ rather than the distillation training technique claimed effective by other researchers.
 \end{abstract}
 \section{Introduction}
 Considering when humans learn to recognize the digits written on a piece of paper, the input is the "viewing" of that image or the pixels on the paper with someone by their side teaching them the right number that image represents.
 People can also teach a computer how to do this by buiding a deep neural network and let it learn the parameters characterizing such a task from a mass of data (hand written digits with labels) without explicitly crafting the algorithm.
-Normally, a deep neural network is built with some initial parameters to be modified to fit the given data set and to generalize well when applied to new data. Learning the hand written digits is a classical deep learning task widely refered to as MNIST, which is often done by convolutional neural networks (CNN).
+Normally, a deep neural network is built with some initial parameters to be modified to fit the given data set and to generalize well when applied to new data. Learning the hand written digits is a classical deep learning task widely referred to as MNIST, which is often done by convolutional neural networks (CNN).
 
 Ever since the introduction of convolutional neural networks for image processing tasks, the recognition accuracy has increased dramatically and achieved state-of-art accuracy in the past few years. Though computers now could outperform humans on this specific task,
 recent study has shown the lack of robustness of CNN against adversarial perturbations which raises plenty of problems about its pragmatic application. 
@@ -38,18 +38,18 @@ recent study has shown the lack of robustness of CNN against adversarial perturb
 Compared with training computers to solve MNIST problem, humans during training process could learn more information than the hard labels given, such as the similarities between different digits, 
 which is some information left out by traditional training with hard label. 
 Theoretically, a deep enough neural network could learn such extra information when trained on a large enough scale of data. Such an ideal neural network does not exist so far due to the limited data people can obtain and computation ability required to perform the training on such neural network, as there is considerable complexity even within the simplest learning task such as MNIST\cite{schmid}. Humans often make use of knowledge from a variety of areas such as math, culture or even their personal experience to deal with MNIST tasks. For example, people can easily recognize rotated hand-written digits right after the training of upright digits from geometry or arabs could find some correlation from their language etc.
-Thus, specifiing some hyperparameters of the training model is considerably neccesary for building a DNN to solev such a realistic problem.
+Thus, specifying some hyper-parameters of the training model is considerably necessary for building a DNN to solve such a realistic problem.
 
-Though soft label method during training process has been suggested but crafting such soft label is also questionable as there is no general rule to create labels which perimetrize the relationship of hand-written digits falling into different categories as percieved by humans.
-It also requres a considerable amount of effort to do these tedious task without a systemetic rule, which disabeys the principle of machine learning that simply tries to avoid these tedious work.
+Though soft label method during training process has been suggested but crafting such soft label is also questionable as there is no general rule to create labels which perameterize the relationship of hand-written digits falling into different categories as perceived by humans.
+It also requires a considerable amount of effort to do these tedious task without a systematic rule, which disobeys the principle of machine learning that simply tries to avoid these tedious work.
 This is where distillation comes to the stage as to provide distilled labels from previously built CNN. The distilled labels can be considered as a kind of soft labels produced by computer, which labels each sample with a soft label using a traditional or regular CNN without distillation or temperature setting. 
 Papernot, McDaniel and Wu etc. have claimed its effectiveness against adversarial perturbation from empirical study in \cite{Papernot}.
-In their work, they also applied a softmax output layer parametrized by a parameter called temperature, which turned out to be the most important factor reducing the success rate of adversarial attack in our study and thus the effectiveness of distillation solely becomes suspectable.
+In their work, they also applied a softmax output layer parameterized by a parameter called temperature, which turned out to be the most important factor reducing the success rate of adversarial attack in our study and thus the effectiveness of distillation solely becomes questionable.
 
-From a set of distilled labels, a deep learning neural network can gain more information such as the relationship between different handwritten digits explicitly. However, the information extracted by the previously built CNN is indeed part of information of the dataset training that CNN.
+From a set of distilled labels, a deep learning neural network can gain more information such as the relationship between different handwritten digits explicitly. However, the information extracted by the previously built CNN is indeed part of information of the database training that CNN.
 As a result, the distillation training method places a considerably rigorous requirement on the CNN that produces those distilled labels.
-Theoretically, CNN built upon distilled labels can never outperform the previously built CNN either in prediction accuracy or robustness against adversarial perturbations based on the assumption that these CNNs make best use of every sample in the dataset. 
-Though, it is of appreciable pragmatic significance as in reality, the dataset is always limited and the computational ability is just a trace of that of human's brain.
+Theoretically, CNN built upon distilled labels can never outperform the previously built CNN either in prediction accuracy or robustness against adversarial perturbations based on the assumption that these CNNs make best use of every sample in the database. 
+Though, it is of appreciable pragmatic significance as in reality, the database is always limited and the computational ability is just a trace of that of human's brain.
 That is why distillation is initially used to train a deep learning neural network on a comparablly computational resource limited devices such as phones, which can then use the preprocessed or distilled labels produced from a DNN on a much powerful computer.
 
 In this paper, we investigated the effectiveness of distillation applied to the classical MNIST classification problem as a defense to adversarial perturbations. We adopted three different algorithms to craft adversarial samples and compared the success rate to make the CNN produce a different prediction from the target.
@@ -115,7 +115,7 @@ Machine learning security is a recently emerging problem after the state-of-art 
 \paragraph{Definition 1.}
 An \textbf{adversarial sample} is an input $x\prime$ obtained by some degree of perturbation from an input $x$ to a prediction model $M$ with $M(x)=y$, where $y$ is the target output, such that $M(x\prime) \ne y$.
 
-The following are examples of adversarial samples obtained from examples in the MNIST dataset by slight perturbations determined (see \textbf{Algorithm 1.}) from the gradient with respect to the cross-entropy (loss) of each sample on every pixel. 
+The following are examples of adversarial samples obtained from examples in the MNIST database by slight perturbations determined (see \textbf{Algorithm 1.}) from the gradient with respect to the cross-entropy (loss) of each sample on every pixel. 
 \begin{figure}[h!]
 	\begin{minipage}{0.5\textwidth}
 		\centering
@@ -161,8 +161,8 @@ For traditional CNN, the success rate is $66\%$ with maximum 100 pixels perturbe
 
 	\item Feed $c$ to the trained CNN and check if the output differs from the target output:
 		\begin{enumerate}
-			\item Yes. terminate the loop and output i
-			\item No. set $i=i+1$. If $i > 100$, terminate and output "Failed". Otherwise, go back to step \textbf{(a).}
+			\item Yes. Terminate the loop and output i
+			\item No. Set $i=i+1$. If $i > 100$, terminate and output "Failed". Otherwise, go back to step \textbf{(a).}
 		\end{enumerate}
 \end{enumerate}
 \end{enumerate}
@@ -200,8 +200,8 @@ Therefore, we implement the following algorithm to make use of most of the infor
 				\end{enumerate}
 			\item Feed $c$ to the trained CNN and check if the output differs from the target output:
 				\begin{enumerate}
-					\item Yes. terminate the loop and output i
-					\item No. set $i=i+1$. If $i > 100$, terminate and output "Failed". Otherwise, go back to step \textbf{(a).}
+					\item Yes. Terminate the loop and output i
+					\item No. Set $i=i+1$. If $i > 100$, terminate and output "Failed". Otherwise, go back to step \textbf{(a).}
 				\end{enumerate}
 		\end{enumerate}
 \end{enumerate}
@@ -209,7 +209,7 @@ Therefore, we implement the following algorithm to make use of most of the infor
 This algorithm captures most of the information in the input array as it makes use both positive and negative large gradients. It also takes into account the amplitude of the changing step for each input pixel to maximize the equation (1).
 
 However, the computational cost or time efficiency cost is $\mathcal{O}(N+M)$ where $N$ is the length of the input array and $M$ is the limit of the number of pixels to be modified. 
-But the \textbf{algorithm 1} is of $\mathcal{O}(N)$ if we assume the cost for computing gradient on a piexel the same as the cost for evaluating the loss function once.
+But the \textbf{algorithm 1} is of $\mathcal{O}(N)$ if we assume the cost for computing gradient on a pixel the same as the cost for evaluating the loss function once.
 
 We can actually sacrifice a little accuracy to obtain a $\mathcal{O}(N)$ efficiency if we ignore the effect $\Delta x[m][n]$ has on $\Delta loss$ and only take into account the negative large gradient.
 
@@ -228,8 +228,8 @@ We can actually sacrifice a little accuracy to obtain a $\mathcal{O}(N)$ efficie
 
 	\item Feed $c$ to the trained CNN and check if the output differs from the target output:
 		\begin{enumerate}
-			\item Yes. terminate the loop and output i
-			\item No. set $i=i+1$. If $i > 100$, terminate and output "Failed". Otherwise, go back to step \textbf{(a).}
+			\item Yes. Terminate the loop and output i
+			\item No. Set $i=i+1$. If $i > 100$, terminate and output "Failed". Otherwise, go back to step \textbf{(a).}
 		\end{enumerate}
 \end{enumerate}
 \end{enumerate}
@@ -308,10 +308,10 @@ When the temperature is set to 20, the average gradient is already approximately
 Though the computational cost is relatively high but it is the only algorithm that could be analyzed numerically without recompiling the code to obtain higher precision or intricate modification of the computational graph.
 
 \paragraph{Definition 3.} 
-\textbf{Distiallation training} is a procedure to, given a previously trained DNN model $M_1$ trained on original target $y_1$, feed the same input $x$ to a learning model $M_2$ to fit the \textbf{distilled target} $y_2=M_1(x)$.\cite{Ba}
+\textbf{Distillation training} is a procedure to, given a previously trained DNN model $M_1$ trained on original target $y_1$, feed the same input $x$ to a learning model $M_2$ to fit the \textbf{distilled target} $y_2=M_1(x)$.\cite{Ba}
 
 Distillation training was initially designed to train a deep learning neural network on a resource restricted device such as phones and tablets. As the computational cost is too high to feed a gigantic database to a DNN with a large number of layers on such devices. 
-Distillation training makes use of the knowledge leared by another more powerful DNN and only use a small subset of the database with distilled targets to solve supervised learning problems.
+Distillation training makes use of the knowledge leaned by another more powerful DNN and only use a small subset of the database with distilled targets to solve supervised learning problems.
 As the distilled targets (similar as soft labels) extracted more information from the database compared to original targets (similar with hard labels), the distilled CNN could converge more rapidly by gradient descent or other optimization methods.
 
 This could also raise problem while training as this might cause gradient explosion during the training and the training has to stop whenever this happens. This is usually handled by reducing the training rate or add a regularization term which decreases with time going.
@@ -319,7 +319,7 @@ This could also raise problem while training as this might cause gradient explos
 \section{Results and Discussion}
 
 \paragraph{Building CNN}The convolutional neural network chosen in our study is based on the architecture used by Papernot\cite{Papernot}.
- But, to avoid gradient explosion occuring when calculating the Jacobian of the loss function with high temperature during training process, the traning rate is reduced to a half.
+ But, to avoid gradient explosion occurring when calculating the Jacobian of the loss function with high temperature during training process, the training rate is reduced to a half.
 
 The testing accuracy for traditional training is \\
 \begin{equation}
@@ -331,17 +331,17 @@ For distillation training using the same input as distilled targets produced by 
 M_{distill} \sim 99.07\%
 \end{equation}
 
-The comparison training model $M_{std-T}$ is a traditional training model except for the output layer using softmax fuction at temperature $20$. After training it with the original targets, the testing accuracy is a bit higher than $M_{distill}$.
+The comparison training model $M_{std-T}$ is a traditional training model except for the output layer using softmax function at temperature $20$. After training it with the original targets, the testing accuracy is a bit higher than $M_{distill}$.
 \begin{equation}
 M_{std-T} \sim 99.34 \%
 \end{equation}
 
-All the three models generalize considerablly well, as proved by Papernot\cite{Papernot} using the theorems introduced by Shalev\cite{Shalev}.
+All the three models generalize considerably well, as proved by Papernot\cite{Papernot} using the theorems introduced by Shalev\cite{Shalev}.
 
 \paragraph{Crafting Adversarial Samples}
-We implemented \textbf{Algorithm 2} to craft adversarial samples due to its relatively high success rate of crafting a adversarial sample which could decieves a traditionally trained CNN , and most importantly to avoid underflow when calculating gradient on CNN with high temperature. Further study can attempt to implement \textbf{Algorithm 3} which requires some intricate modification for building the computational graph.
+We implemented \textbf{Algorithm 2} to craft adversarial samples due to its relatively high success rate of crafting a adversarial sample which could deceives a traditionally trained CNN , and most importantly to avoid underflow when calculating gradient on CNN with high temperature. Further study can attempt to implement \textbf{Algorithm 3} which requires some intricate modification for building the computational graph.
 
-The success rate of adversarial attack against a standard or traditonal CNN $(M_{std})$ is around $rate_{std}=37\%$ (35.69\% for $M_{distill}$ and 35.69\% for $M_{std-T}$ in two empirical tests) without excluding the samples causing $M_{distill}$ or $M_{std-T}$ to underflow. Similarly, $rate_{distill}=1.31\%$, $rate_{std-T}=0.81\%$. In summary:
+The success rate of adversarial attack against a standard or traditional CNN $(M_{std})$ is around $rate_{std}=37\%$ (35.69\% for $M_{distill}$ and 35.69\% for $M_{std-T}$ in two empirical tests) without excluding the samples causing $M_{distill}$ or $M_{std-T}$ to underflow. Similarly, $rate_{distill}=1.31\%$, $rate_{std-T}=0.81\%$. In summary:
 
 \begin{table}[h!]
 
@@ -406,7 +406,7 @@ We continue to perturb pixels one by one using \textbf{Algorithm 2} until the pr
 	\end{minipage} \hfill
 \end{figure}
 
-As illustrated by \textbf{Figure 3$\sim$8}, the success rate to decieve a traditionally trained CNN is $66\%$ when the maximum pixels to perturb is set to 100.
+As illustrated by \textbf{Figure 3$\sim$8}, the success rate to deceive a traditionally trained CNN is $66\%$ when the maximum pixels to perturb is set to 100.
 While both distillation training and high temperature traditional training improve the robustness of the CNN against adversarial perturbation and reduce the success rate to $2.22\%$ for distillation training and $1.49\%$ for high temperature traditional training from our empirical study.
 
 Our empirical study suggests that the robustness against adversarial perturbation of the CNN trained by distillation at high temperature should result mainly from the high temperature rather than the usage of distillation technique.
@@ -419,7 +419,7 @@ A traditional CNN $M_{std}$ was trained as a blank comparison model and model $M
 As a comparison, another CNN $M_{std-T}$ of the same architecture without distillation was trained at the same temperature as the distillation model $(M_{distill})$.
 We implemented the adversarial sample crafting \textbf{Algorithm 2} for relatively high success rate and low computational cost. Besides, this algorithm reduces the chance to underflow when evaluating saliency maps.
 
-Our testing result shows that the two modified CNN models $M_{distill},M_{std-T}$ both generalize $(M_{distill} \sim 99.07\%$ , $M_{std-T} \sim 99.34\%)$ well compared to traditional training $(99.57\%)$ with slight decrease. 
+Our testing result shows that the two modified CNN models $M_{distill},M_{std-T}$ both generalize $(M_{distill} \sim 99.07\%$ , $M_{std-T} \sim 99.34\%)$ well compared to traditional training $(99.57\%)$ with slight decrease (less than 0.5\%). 
 However, both model $M_{distill}$ and $M_{std-T}$ improve the robustness of the CNN by almost the same amount with $M_{std-T}$ slightly more robust than $M_{distill}$. This result suggests that the temperature of the output sofmax layer plays the most important role in reducing the success rate of adversarial attacks. Therefore, it leaves the effectiveness of distillation training in question.
 
 Moreover, further study can investigate the robustness of CNN at much higher temperature $(T > 100)$ and test the adversarial sample crafting \textbf{Algorithm 3} with high precision and probably a certain amount of modifications to the building of computational graph.
@@ -429,7 +429,7 @@ Moreover, further study can investigate the robustness of CNN at much higher tem
 
 \newpage
 \appendix
-\section{Sample Saliency map for tradional CNN}
+\section{Sample Saliency Map for Traditionally Trained CNN}
 mean gradient: -2.2915e-08\\
 max gradient: 9.78318e-05\\
 Perturbed: 12\\
